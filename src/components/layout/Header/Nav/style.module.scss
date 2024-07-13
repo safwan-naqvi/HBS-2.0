@@ -1,0 +1,55 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 40px 50px 40px;
+  height: 100%;
+  box-sizing: border-box;
+  .body {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    .linkContainer {
+      perspective: 120px;
+      perspective-origin: bottom;
+    }
+    .link {
+      text-decoration: none;
+      color: black;
+      font-size: 46px;
+      font-weight: 500;
+      transition: 0.3s all ease-in-out;
+      &:hover {
+        color: white;
+        margin-left: 20px;
+      }
+    }
+  }
+  @media (max-width: 480px) {
+    .body {
+        gap: 10px;
+        .linkContainer {
+          perspective: 140px;
+          perspective-origin: bottom;
+        }
+        .link {
+          font-size: 24px;
+          font-weight: 500;
+          &:hover {
+            margin-left: 20px;
+          }
+        }
+      }
+  }
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    .link {
+      transition: 0.3s all ease-in-out;
+      &:hover {
+        margin-left: 10px;
+      }
+    }
+  }
+}

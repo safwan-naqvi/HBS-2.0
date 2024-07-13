@@ -1,0 +1,9 @@
+.targetRefSection:before {
+  background-image: radial-gradient(
+    circle at var(--x, 100px) var(--y, 100px),
+    rgba(85, 1, 61, 1) 0%,
+    rgb(63, 0, 52) 50%,
+    rgba(26, 26, 26, 1) 100%,
+    transparent 100%
+  );
+}

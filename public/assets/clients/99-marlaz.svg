@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 202 258.05">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: PerpetuaTitlingMT-Light, 'Perpetua Titling MT';
+        font-size: 36.88px;
+        font-weight: 300;
+      }
+
+      .cls-2 {
+        font-family: HelveticaNeue-Bold, 'Helvetica Neue';
+        font-size: 19.99px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <text class="cls-2" transform="translate(6.49 248.44)"><tspan x="0" y="0">Real Estate Agency</tspan></text>
+      <text class="cls-1" transform="translate(0 227.7)"><tspan x="0" y="0">99 Marlaz</tspan></text>
+      <path d="m161.67,186.52h-32.66v-77.47h-12.34v53.02h-32.55v-63.89h21.7v-22.57h-32.55v110.91h-32.01v-121.79h21.16V0h77.44v98.18h21.81v88.34Zm-21.81-10.88h10.96v-66.59h-10.96v66.59Zm-87.74,0h10.31v-100.03h-10.31v100.03Zm42.85-24.45h10.85v-42.14h-10.85v42.14Zm21.7-53.02h12.34V10.88h-55.74v53.86h43.4v33.44Z"/>
+    </g>
+  </g>
+</svg>

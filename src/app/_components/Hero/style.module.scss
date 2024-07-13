@@ -1,0 +1,38 @@
+$vh: 7.5px;
+
+.hero {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.videoBG {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.gradientBg {
+  background: rgb(85, 1, 61);
+  background: radial-gradient(
+    circle,
+    rgba(85, 1, 61, 1) 0%,
+    rgba(33, 1, 51, 1) 47%,
+    rgba(26, 26, 26, 1) 100%
+  );
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: calc($vh * 100);
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  min-height: 32.5rem;
+  position: relative;
+  z-index: 2;
+  color: #d3d3d3;
+}

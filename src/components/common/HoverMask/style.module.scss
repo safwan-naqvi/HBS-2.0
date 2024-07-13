@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+  width: fit-content;
+  padding: 0px 10px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 767px){
+  .container{
+    width: 100%;
+  }
+}
