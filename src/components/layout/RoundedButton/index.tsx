@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import gsap from "gsap";
-import Magnetic from "../../../../../../HashBitStudio/old/Hashbitstudio/components/common/Magnetic";
+import Magnetic from "@/components/common/Magnetic";
 
 export default function RoundedButton({
   children,
