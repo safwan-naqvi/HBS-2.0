@@ -11,7 +11,7 @@ export function Hero() {
                 {/* <div className={clsx("h-full w-full absolute left-0 top-0", styles.gradientBg)}>
                 </div> */}
                 <div className={styles.content}>
-                    <h1 className="text-4xl -mt-24 md:mt-6 md:text-7xl font-[600] w-[650px] text-center md:leading-[4.5rem] tracking-tighter pointer-events-none">
+                    <h1 className="text-5xl -mt-24 md:mt-6 md:text-7xl font-[600] w-[650px] text-center leading-[3.5rem] md:leading-[4.5rem] tracking-tighter pointer-events-none">
                         <span className="block">Unlocking</span>
                         <span className="block">Digital</span>
                         <span className="block">Solutions</span>

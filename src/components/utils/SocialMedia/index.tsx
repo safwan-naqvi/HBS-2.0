@@ -28,7 +28,7 @@ const links = [
 
 export default function SocialMedia() {
   return (
-    <div className="flex flex-col gap-6 md:gap-8 pb-20 fixed z-30 -bottom-4 md:bottom-0 left-[2rem] md:left-[3rem] max-w-[40px]">
+    <div className={`flex flex-col gap-6 md:gap-8 pb-20 fixed z-30 -bottom-4 md:bottom-0 left-[2rem] md:left-[3rem] max-w-[40px]`}>
       {links.map((link) => (
         <Framer key={link.name}>
           <div>

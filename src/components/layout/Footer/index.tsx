@@ -13,7 +13,7 @@ const inter = Inter({
 
 export default function Footer() {
   return (
-    <section className="min-h-[60vh] w-full pt-14 pb-2 text-gray-300 box-border">
+    <section className="relative h-full w-full pt-14 pb-2 mt-10 text-gray-300 box-border">
       <div className="flex flex-col items-center md:flex-row gap-10 w-full md:w-[80vw] mx-auto">
         <div className="w-[60%] flex flex-col gap-2 items-start">
           <Image
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
       </div>
       <Separator className="mt-8 bg-[#A91079]" />
-      <div className="max-w-full w-full flex flex-col p-4 gap-3 md:flex-row items-center justify-between !box-border">
+      <div className="max-w-full w-full flex flex-col p-4 gap-3 md:flex-row items-center justify-between !box-border px-20 lg:px-40">
         <div>
           <span className={inter.className}>HBS Copyright@2024</span>
         </div>

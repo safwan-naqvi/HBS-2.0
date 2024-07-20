@@ -45,10 +45,11 @@ const Introduction: React.FC = () => {
                 autoPlay={!isMobile}
                 muted={!isMobile}
                 loop={!isMobile}
+                playsInline
                 poster="./assets/intro_poster.png"
                 onClick={handleVideoClick}
             >
-                <source src="./videos/intro.webm" type="video/webm" />
+                <source src="/videos/intro.webm" type="video/webm" />
                 Your browser does not support the video tag.
             </motion.video>
 

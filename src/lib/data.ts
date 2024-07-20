@@ -2,9 +2,6 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
 import { CardType } from "@/lib/types";
 
 export const links = [
@@ -115,37 +112,6 @@ export const skillsData = [
   "Django",
   "Framer Motion",
 ] as const;
-
-// export const technologies = [
-//   {
-//     title: "CSS3",
-//     src: "/skills/css.png",
-//   },
-//   {
-//     title: "Figma",
-//     src: "/skills/figma.png",
-//   },
-//   {
-//     title: "Firebase",
-//     src: "/skills/firebase.png",
-//   },
-//   {
-//     title: "Framer",
-//     src: "/skills/framer.png",
-//   },
-//   {
-//     title: "React JS",
-//     src: "/skills/react.png",
-//   },
-//   {
-//     title: "Redux",
-//     src: "/skills/redux.png",
-//   },
-//   {
-//     title: "Tailwind CSS",
-//     src: "/skills/tailwind.png",
-//   },
-// ];
 
 export const projectData = [
   {
@@ -282,8 +248,8 @@ export const FooterServicesLink = [
     label: "Home",
   },
   {
-    href: "/work",
-    label: "Work",
+    href: "/portfolio",
+    label: "Portfolio",
   },
   {
     href: "/contact",
