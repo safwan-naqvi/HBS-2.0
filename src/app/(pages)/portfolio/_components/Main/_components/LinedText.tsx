@@ -40,20 +40,20 @@ export const LinedText = () => {
         "--opacity-border": opacityBorder,
       })}
       ref={targetRef}
-      className="mt-[50vh] flex h-[500vh] items-start justify-start"
+      className="mt-[50vh] flex h-[500vh] w-full items-start justify-start"
     >
-      <div className="sticky top-1/2 left-1/2 min-h-[25rem] md:min-h-[50rem] min-w-[25rem]  md:min-w-[50rem] translate-x-0 lg:-translate-x-1/2 -translate-y-1/2 whitespace-nowrap before:absolute before:inset-0 before:scale-[var(--scale)] before:border-[2.5rem] before:border-[#ad75fc] before:opacity-[var(--opacity-border)]">
+      <div className="sticky top-1/2 left-1/2 min-h-[25rem] md:min-h-[50rem] min-w-[25rem] md:min-w-[50rem] translate-x-0 md:-translate-x-1/2 lg:-translate-x-1/2 -translate-y-1/2 whitespace-nowrap before:absolute before:inset-0 before:scale-[var(--scale)] before:border-[2.5rem] before:border-[#ad75fc] before:opacity-[var(--opacity-border)]">
         <motion.p
           aria-hidden
           style={{ x: textX, y: "-50%" }}
-          className="whitepspace-nowrap min-w-screen absolute top-1/2 left-[calc(-50vw+25rem)] text-[16rem] md:text-[23rem] text-[#f5f5f7]"
+          className="whitepspace-nowrap min-w-screen absolute top-1/2 left-[calc(-50vw+25rem)] text-[14rem] md:text-[23rem] text-[#f5f5f7]"
         >
           We Not Only Develop
         </motion.p>
         <motion.p
           aria-hidden
           style={{ x: textX, y: "-50%" }}
-          className="whitepspace-nowrap min-w-screen absolute top-1/2 left-[calc(-50vw+25rem)] z-[11] text-[16rem] md:text-[23rem] text-transparent [-webkit-text-stroke:1px_#f5f5f7]"
+          className="whitepspace-nowrap min-w-screen absolute top-1/2 left-[calc(-50vw+25rem)] z-[11] text-[14rem] md:text-[23rem] text-transparent [-webkit-text-stroke:1px_#f5f5f7]"
         >
           We Not Only Develop
         </motion.p>

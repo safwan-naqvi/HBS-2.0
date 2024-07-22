@@ -24,7 +24,7 @@ export const Clients = ({
 
     useEffect(() => {
         addAnimation();
-    }, []);
+    });
     const [start, setStart] = useState(false);
     function addAnimation() {
         if (containerRef.current && scrollerRef.current) {

@@ -9,6 +9,7 @@ import ServiceGallery from './_components/Main/ServiceGallery';
 import { ParallaxScroll } from "@/components/common/ParallaxGrid/Parallax";
 import { GoArrowUpRight } from 'react-icons/go';
 import Footer from '@/components/layout/Footer';
+import { LeadForm } from '@/components/layout/LeadForm/LeadForm';
 export default function Portfolio() {
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -29,7 +30,7 @@ export default function Portfolio() {
                 <SocialMedia />
                 <HeroContainer />
                 <ServiceGallery />
-                <div className='flex text-white items-center justify-between gap-2 border-b border-neutral-300 mb-12 sm:mb-14 pb-4 px-20'>
+                <div className='flex text-white items-center justify-between gap-2 border-b border-neutral-300 mb-12 sm:mb-14 pb-4 px-10 md:px-20'>
                     <div className="flex items-center">
                         <div className="flex h-8 w-8 relative items-center justify-center"><span className="animate-ping absolute h-8 w-8 rounded-full bg-[#8a33c8] opacity-75"></span><span className="relative rounded-full h-8 w-8 bg-[#850194]"></span></div>
                         <span className="ml-2">BRANDS</span>
@@ -39,6 +40,13 @@ export default function Portfolio() {
                     </button>
                 </div>
                 <ParallaxScroll images={images} />
+                <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
+                    <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">Have a Project Idea?</h2>
+                    <img src="/assets/contact_bg.webp" alt="Contact Image" className="object-cover absolute bottom-0 left-0" />
+                    <div className="mt-10 md:mt-4 z-10">
+                        <LeadForm />
+                    </div>
+                </div>
                 <Footer />
             </div>
         </>

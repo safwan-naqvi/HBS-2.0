@@ -13,9 +13,9 @@ const inter = Inter({
 
 export default function Footer() {
   return (
-    <section className="relative h-full w-full pt-14 pb-2 mt-10 text-gray-300 box-border">
-      <div className="flex flex-col items-center md:flex-row gap-10 w-full md:w-[80vw] mx-auto">
-        <div className="w-[60%] flex flex-col gap-2 items-start">
+    <section className="relative h-full w-full pt-14 pb-2 px-0 md:px-10 mt-10 text-gray-300 box-border">
+      <div className="grid grid-cols-12 w-full">
+        <div className="col-span-12 md:col-span-6 w-full items-center pb-10 flex flex-col gap-2 md:items-start">
           <Image
             src={"/assets/footer_logo.png"}
             alt="Hashbitstudio Logo"
@@ -23,14 +23,14 @@ export default function Footer() {
             width={350}
             quality={100}
           />
-          <p className="text-md text-start tracking-tight max-w-[400px]">
+          <p className="text-md md:text-start text-center tracking-tight max-w-[300px] md:max-w-[400px]">
             Elevating digital presence with creative mastery, where design meets
             strategy, we craft functional and captivating online experiences for
             the future.
           </p>
           <SlidingButton href="/contact" label="Contact Us" />
         </div>
-        <div className="flex gap-4">
+        <div className="col-span-12 md:col-span-6 pt-10 md:pt-0 border-t md:border-none text-center grid grid-cols-2 gap-4 w-full">
           <div className="w-[50%] md:w-[15%] mx-auto">
             <span className="text-white font-normal tracking-tight">
               Quick Links

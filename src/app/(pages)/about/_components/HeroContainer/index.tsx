@@ -1,11 +1,10 @@
 "use client";
 import { AiOutlineMinus } from "react-icons/ai";
+import Character from "@/components/TextScrollEffect/Character";
 import styles from "./style.module.scss";
 import { useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import clsx from "clsx";
-import { FaArrowRightLong } from "react-icons/fa6";
-import Link from "next/link";
 export default function HeroContainer() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -37,31 +36,31 @@ export default function HeroContainer() {
     <motion.div
       ref={targetRef}
       style={{ opacity }}
+      // className="h-screen bg-black text-white w-full"
       className={clsx(
         "relative mb-[8rem] h-screen py-16 text-white before:pointer-events-none before:fixed before:inset-0 before:z-0 before:opacity-40",
         styles.targetRef
       )}
     >
-      <div className="h-full flex items-center flex-col lg:flex-row gap-10 justify-center w-full max-w-screen-xl mx-auto">
+      <div className="h-full flex items-center justify-center w-full max-w-screen-xl mx-auto">
         <motion.div
           style={{ scale }}
-          className="w-[80%] lg:w-[80%] cursor-default -mt-[5rem] flex flex-col gap-4 md:flex-row items-center justify-center"
+          className="w-[80%] cursor-default -mt-[5rem] flex items-center"
         >
-          <h1 className="text-5xl lg:text-7xl font-[600] w-full tracking-tighter">
-            Work{" "}
-            <span className="block text-white/80">
-              <AiOutlineMinus className="inline-block" />
-              Portfolio
-            </span>
-          </h1>
-          <p>{paragraph}</p>
+          <div className="w-full">
+            <h1 className="text-6xl font-[600] w-full tracking-tighter">
+              About{" "}
+              <span className="block text-white/80">
+                <AiOutlineMinus className="inline-block" />
+                HashBitStudio
+              </span>
+            </h1>
+          </div>
+          <div className="w-[50%]">
+            <p>{paragraph}</p>
+          </div>
         </motion.div>
-        <Link href={""} className="relative group rounded-full h-40 w-40 p-3 bg-[#7a26ce] hover:bg-[#6222b5] box-border transition-all text-md font-light tracking-tight">
-          <img src="/assets/circle_text.svg" alt="Lets Build" className="animate-spin-slow group-hover:animate-spin-slow-reverse" />
-          <FaArrowRightLong className="absolute rotate-45 group-hover:rotate-0 transition-all top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-10 w-10" />
-        </Link>
       </div>
-
     </motion.div>
   );
 }

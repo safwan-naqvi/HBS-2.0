@@ -46,7 +46,7 @@ const DirectionText = () => {
             x: "-500px",
         });
         requestAnimationFrame(animate);
-    }, []);
+    });
     return (
         <motion.main
             id="home"

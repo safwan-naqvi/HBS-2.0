@@ -3,12 +3,16 @@ import { Features } from "./_components/Features";
 import { LinedText } from "./_components/LinedText";
 import SkewGallery from "./_components/SkewGallery";
 import { GoArrowUpRight } from "react-icons/go";
+import { useMediaQuery } from "react-responsive";
 
 export default function ServiceGallery() {
+  const isMobile = useMediaQuery({ query: "(min-width:640px)" });
+  const isNotTab = useMediaQuery({ query: "(max-width:1024px)" });
+  console.log(isMobile)
   return (
     <>
-      <div className="w-full min-h-full overflow-x-clip bg-black text-white">
-        <LinedText />
+      <div className="w-full h-full overflow-x-clip bg-black text-white">
+        {isMobile && isNotTab ? "" : <LinedText />}
         <Features />
         <section className='py-48 bg-[#0b0b0b]'>
           <div className="container">
