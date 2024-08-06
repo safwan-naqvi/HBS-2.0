@@ -1,4 +1,5 @@
-import { CardType } from "@/utils/types";
+import { CardType } from "@/lib/types";
+
 
 export default function Card({ card }: { card: CardType }) {
   return (
