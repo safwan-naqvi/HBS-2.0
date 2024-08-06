@@ -13,7 +13,7 @@ const inter = Inter({
 
 export default function Footer() {
   return (
-    <section className="relative h-full w-full pt-14 pb-2 px-0 md:px-10 mt-10 text-gray-300 box-border">
+    <section className="relative w-full pt-14 pb-2 px-0 md:px-10 mt-10 text-gray-300 box-border">
       <div className="grid grid-cols-12 w-full">
         <div className="col-span-12 md:col-span-6 w-full items-center pb-10 flex flex-col gap-2 md:items-start">
           <Image
@@ -30,9 +30,9 @@ export default function Footer() {
           </p>
           <SlidingButton href="/contact" label="Contact Us" />
         </div>
-        <div className="col-span-12 md:col-span-6 pt-10 md:pt-0 border-t md:border-none text-center grid grid-cols-2 gap-4 w-full">
+        <div className="col-span-12 md:col-span-6 pt-10 md:pt-0 border-t md:border-none grid grid-cols-2 gap-4 w-full">
           <div className="w-[50%] md:w-[15%] mx-auto">
-            <span className="text-white font-normal tracking-tight">
+            <span className="text-white md:text-left font-normal tracking-tight">
               Quick Links
             </span>
             <ul className="mt-4 flex flex-col gap-3">

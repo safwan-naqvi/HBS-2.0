@@ -3,4 +3,5 @@ export type TeamType = {
     url: string;
     title: string;
     alt: string;
+    founder: boolean
 };

@@ -27,13 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <SmoothScroll>
-          <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Toaster />
-          </ActiveSectionContextProvider>
-        </SmoothScroll>
+        {/* <SmoothScroll> */}
+        <ActiveSectionContextProvider>
+          <Header />
+          {children}
+          <Toaster />
+        </ActiveSectionContextProvider>
+        {/* </SmoothScroll> */}
       </body>
     </html>
   );

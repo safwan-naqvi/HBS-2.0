@@ -1,6 +1,5 @@
 "use client";
 import { AiOutlineMinus } from "react-icons/ai";
-import Character from "@/components/TextScrollEffect/Character";
 import styles from "./style.module.scss";
 import { useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";

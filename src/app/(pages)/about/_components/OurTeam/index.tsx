@@ -6,6 +6,7 @@ import { TeamType } from "@/utils/types";
 import { motion, useAnimation } from "framer-motion";
 import clsx from "clsx";
 import { BsGithub } from "react-icons/bs";
+import { Badge } from "@/components/ui/badge";
 const Team = [
   {
     id: 1,
@@ -13,6 +14,7 @@ const Team = [
     url: "/assets/team/safwan.webp",
     title: "Syed Safwan Abbas",
     alt: "Full Stack Web Developer",
+    founder: true
   },
   {
     id: 2,
@@ -20,6 +22,7 @@ const Team = [
     url: "/assets/team/haris.webp",
     title: "Haris Khan",
     alt: "Graphics Designer",
+    founder: false
   },
   {
     id: 3,
@@ -27,6 +30,7 @@ const Team = [
     url: "/assets/team/raza.webp",
     title: "Syed Meesum Raza",
     alt: "Developer",
+    founder: false
   },
 ];
 
@@ -58,6 +62,7 @@ export default function OurTeam() {
             url={team.url}
             alt={team.alt}
             title={team.title}
+            founder={team.founder}
           />
         ))}
       </div>
@@ -65,7 +70,7 @@ export default function OurTeam() {
   );
 }
 
-const Card = ({ link, url, title, alt }: TeamType) => {
+const Card = ({ link, url, title, alt, founder }: TeamType) => {
   const namePlateRef = useRef<HTMLDivElement>(null);
   const namePlateAnimation = useAnimation();
   return (
@@ -100,6 +105,8 @@ const Card = ({ link, url, title, alt }: TeamType) => {
           }}
           transition={{ ease: [0.76, 0, 0.24, 1] }}
         >
+
+          {founder === true && <Badge variant={"destructive"} className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">Founder</Badge>}
           <p className="w-full text-white text-left tracking-tight text-xl font-bold">
             {title}
           </p>
