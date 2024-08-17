@@ -11,22 +11,22 @@ import { GoArrowUpRight } from 'react-icons/go';
 import Footer from '@/components/layout/Footer';
 import { LeadForm } from '@/components/layout/LeadForm/LeadForm';
 export default function Portfolio() {
-    const [isLoading, setIsLoading] = useState(true);
-    useEffect(() => {
-        document.body.style.overflow = "hidden";
-        setTimeout(() => {
-            document.body.style.overflow = "auto";
-            setIsLoading(false);
-            document.body.style.cursor = "default";
-            window.scrollTo(0, 0);
-        }, 2000);
-    }, []);
+    // const [isLoading, setIsLoading] = useState(true);
+    // useEffect(() => {
+    //     document.body.style.overflow = "hidden";
+    //     setTimeout(() => {
+    //         document.body.style.overflow = "auto";
+    //         setIsLoading(false);
+    //         document.body.style.cursor = "default";
+    //         window.scrollTo(0, 0);
+    //     }, 2000);
+    // }, []);
     return (
         <>
-            <div className={"flex flex-col min-h-screen bg-background"}>
-                <AnimatePresence mode="wait">
+            <div className={"flex flex-col min-h-screen bg-background fade-in"}>
+                {/* <AnimatePresence mode="wait">
                     {isLoading && <Preloader pagename="Portfolio" />}
-                </AnimatePresence>
+                </AnimatePresence> */}
                 <SocialMedia />
                 <HeroContainer />
                 <ServiceGallery />
@@ -40,7 +40,7 @@ export default function Portfolio() {
                     </button>
                 </div>
                 <ParallaxScroll images={images} />
-                <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
+                <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
                     <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">Have a Project Idea?</h2>
                     <img src="/assets/contact_bg.webp" alt="Contact Image" className="object-cover absolute bottom-0 left-0" />
                     <div className="mt-10 md:mt-4 z-10">

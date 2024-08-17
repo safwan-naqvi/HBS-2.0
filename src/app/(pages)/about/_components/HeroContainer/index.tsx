@@ -44,18 +44,18 @@ export default function HeroContainer() {
       <div className="h-full flex items-center justify-center w-full max-w-screen-xl mx-auto">
         <motion.div
           style={{ scale }}
-          className="w-[80%] cursor-default -mt-[5rem] flex items-center"
+          className="w-full max-w-7xl mx-auto cursor-default -mt-[5rem] flex flex-col lg:flex-row items-center gap-4"
         >
           <div className="w-full">
-            <h1 className="text-6xl font-[600] w-full tracking-tighter">
-              About{" "}
-              <span className="block text-white/80">
-                <AiOutlineMinus className="inline-block" />
+            <h1 className="text-6xl font-[600] w-full tracking-tighter flex items-center">
+              <AiOutlineMinus className="inline-block rotate-90" />
+              <span className="text-white/80">
+                About
                 HashBitStudio
               </span>
             </h1>
           </div>
-          <div className="w-[50%]">
+          <div className="max-w-xl w-full px-10">
             <p>{paragraph}</p>
           </div>
         </motion.div>

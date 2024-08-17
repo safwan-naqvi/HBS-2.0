@@ -11,6 +11,7 @@ import { AnimatePresence } from "framer-motion";
 import styles from "./styles.module.scss";
 import Header from "@/components/layout/Header";
 import Preloader from "../_components/Preloader";
+import Footer from "@/components/layout/Footer";
 
 const dm_sans = DM_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -18,25 +19,25 @@ const dm_sans = DM_Sans({
 });
 
 export default function Contact() {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    setTimeout(() => {
-      document.body.style.overflow = "auto";
-      setIsLoading(false);
-      document.body.style.cursor = "default";
-      window.scrollTo(0, 0);
-    }, 2000);
-  }, []);
+  // const [isLoading, setIsLoading] = useState(true);
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   setTimeout(() => {
+  //     document.body.style.overflow = "auto";
+  //     setIsLoading(false);
+  //     document.body.style.cursor = "default";
+  //     window.scrollTo(0, 0);
+  //   }, 2000);
+  // }, []);
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         {isLoading && <Preloader pagename="Contact" />}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <Header />
       <Toaster position="top-right" />
-      <div className="min-h-screen py-[12rem] bg-[#0e0e0e] text-gray-50">
+      <div className="min-h-screen py-[12rem] bg-[#0e0e0e] text-gray-50 fade-in">
         <div className="container mx-auto px-[6vw] lg:px-[10vw]">
           <div className="flex flex-col-reverse lg:flex-row gap-5 items-center flex-wrap relative will-change-transform">
             {/* col one  */}
@@ -118,6 +119,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

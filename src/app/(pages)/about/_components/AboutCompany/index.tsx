@@ -8,9 +8,9 @@ export default function AboutCompany() {
   const words = AboutCompanyText;
 
   return (
-    <div className="relative w-full min-h-full bg-[#131313] flex flex-col pt-10">
+    <div className="relative w-full min-h-full bg-[#131313] flex flex-col pt-10 px-10">
       <div className="relative flex flex-col max-w-[900px] mx-auto items-center py-9">
-        <h1 className="pointer-events-none text-7xl text-center font-[600] tracking-tighter leading-[1.1em] text-gray-300">
+        <h1 className="pointer-events-none text-3xl lg:text-7xl text-center font-[600] tracking-tighter leading-[1.1em] text-gray-300">
           <span className="text-white">HashBitStudio</span> Unleash Creativity
           Through Dedication and Innovation
         </h1>

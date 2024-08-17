@@ -4,9 +4,9 @@ import React from 'react'
 
 const OurSuccess = () => {
     return (
-        <div className='w-full px-20 pt-20 min-h-[100vh] bg-gradient-to-r from-slate-50 to-gray-200 relative'>
-            <h2 className='text-7xl font-semibold tracking-tight'>Empowering <br /> Success Stories</h2>
-            <div className='grid grid-cols-1 lg:grid-cols-2 w-full h-full mt-20'>
+        <div className='w-full px-10 lg:px-20 pt-20 min-h-[100vh] bg-gradient-to-r from-slate-50 to-gray-200 relative'>
+            <h2 className='text-4xl lg:text-7xl font-semibold tracking-tight'>Empowering <br /> Success Stories</h2>
+            <div className='grid grid-cols-1 lg:grid-cols-2 w-full h-full mt-10 lg:mt-20'>
                 <div className='hidden lg:block col-span-1 place-items-end h-full relative'>
                     <img src={"/assets/images/sculpt.png"} alt='Sculpture' className='h-auto w-full absolute bottom-0' />
                 </div>
