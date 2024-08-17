@@ -95,8 +95,8 @@ export default function Home() {
         <Hero />
         <Introduction />
         <div className="my-20 w-full">
-          <Clients items={images} speed="normal" />
-          <Clients items={imagesTwo} speed="normal" direction="right" />
+          <Clients items={images} speed="slow" />
+          <Clients items={imagesTwo} speed="slow" direction="right" />
         </div>
         <About />
         <TechSection />
@@ -107,7 +107,7 @@ export default function Home() {
             <VelocityScroll
               text="Connect With Us"
               default_velocity={3}
-              className="font-display text-center space-y-4 text-4xl font-semibold tracking-tight text-white drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+              className="font-display text-center space-y-8 text-7xl font-semibold tracking-tight text-white drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
             />
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default function Home() {
           <h2 className="text-3xl w-full text-center md:text-6xl font-semibold tracking-tighter text-[#ab2767] drop-shadow-lg absolute top-0 translate-y-1/2 md:-translate-y-2/3 left-1/2 -translate-x-1/2">What our Clients Says?</h2>
           <Testimonials />
         </div>
-        <div className="text-white w-full md:max-w-7xl py-40 px-10 md:px-0 flex items-center">
+        <div className="text-white w-full md:max-w-7xl py-40 px-10 md:px-20 flex items-center">
           <Faqs Faq={HomepageFaqs} />
         </div>
         <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">

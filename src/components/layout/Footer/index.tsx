@@ -13,7 +13,7 @@ const inter = Inter({
 
 export default function Footer() {
   return (
-    <section className="relative w-full pt-14 pb-2 px-0 md:px-10 mt-10 text-gray-300 box-border">
+    <section className="relative w-full pt-14 pb-2 px-0 md:px-10 lg:px-20 mt-10 text-gray-300 box-border">
       <div className="grid grid-cols-12 w-full">
         <div className="col-span-12 md:col-span-6 w-full items-center pb-10 flex flex-col gap-2 md:items-start">
           <Image
@@ -62,12 +62,12 @@ export default function Footer() {
         </div>
       </div>
       <Separator className="mt-8 bg-[#A91079]" />
-      <div className="max-w-full w-full flex flex-col p-4 gap-3 md:flex-row items-center justify-between !box-border px-20 lg:px-40">
+      {/* <div className="max-w-full w-full flex flex-col p-4 gap-3 md:flex-row items-center justify-between !box-border md:px-10 xl:px-20">
         <div>
           <span className={inter.className}>HBS Copyright@2024</span>
         </div>
         <HoverMask />
-      </div>
+      </div> */}
     </section>
   );
 }

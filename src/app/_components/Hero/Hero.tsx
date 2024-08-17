@@ -3,10 +3,23 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import React from "react";
 import styles from "./style.module.scss";
 import clsx from "clsx";
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "react-responsive";
 
 export function Hero() {
+    const isBigScreen = useMediaQuery({ query: '(min-width: 1000px)' })
     return (
-        <div className="h-[40rem] w-full rounded-md bg-background relative flex flex-col items-center justify-center antialiased">
+        <div className="h-[40rem] w-full bg-gradient-to-b from-[#040C0E] to-transparent relative flex flex-col items-center justify-center antialiased">
+
+
+            <div className={styles.outerBlob}></div>
+            <div className={styles.innerBlob}></div>
+            <div className={styles.topBlob}></div>
+            <div className={styles.topLeftBlob}></div>
+
+
+
+
             <div className={styles.hero}>
                 {/* <div className={clsx("h-full w-full absolute left-0 top-0", styles.gradientBg)}>
                 </div> */}
@@ -25,7 +38,8 @@ export function Hero() {
                     </p>
                 </div>
             </div>
-            <BackgroundBeams />
+
+            {/* <BackgroundBeams /> */}
         </div>
     );
 }

@@ -182,8 +182,8 @@ export const projects = [
       "Illustrations and Infographics",
       "Motion Graphics",
     ],
-    src: "/assets/images/graphics.webp",
-    link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
+    src: "/assets/images/brand-guidelines.webp",
+    link: "/",
     color: "#F6C954",
   },
   {
@@ -197,8 +197,8 @@ export const projects = [
       "Campaign Management",
       "Analytics and Performance Tracking",
     ],
-    src: "/assets/images/socialmedia.webp",
-    link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
+    src: "/assets/images/social-media.webp",
+    link: "/",
     color: "#FA2F67",
   },
   {
