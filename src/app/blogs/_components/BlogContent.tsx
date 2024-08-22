@@ -7,7 +7,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import CategoriesTab from './CategoriesTab';
 import Articles from './Articles';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import {
     Pagination,
     PaginationContent,
@@ -87,49 +87,51 @@ const BlogContent = () => {
                     selectedCategory={selectedCategory}
                 />
             )}
-            <div className='mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
-                {blogLoading ? (
-                    <ArticleSkeleton count={4} />
-                ) : blogData && blogData.data.length > 0 ? (
-                    blogData.data.map((article: IArticle) => (
-                        <Articles key={article.id} article={article} />
-                    ))
-                ) : (
-                    <div className='w-full h-full flex items-center justify-center'>
-                        <p>No articles found for this category.</p>
-                    </div>
+            <Suspense>
+                <div className='mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
+                    {blogLoading ? (
+                        <ArticleSkeleton count={4} />
+                    ) : blogData && blogData.data.length > 0 ? (
+                        blogData.data.map((article: IArticle) => (
+                            <Articles key={article.id} article={article} />
+                        ))
+                    ) : (
+                        <div className='w-full h-full flex items-center justify-center'>
+                            <p>No articles found for this category.</p>
+                        </div>
+                    )}
+                </div>
+                {totalPages > 1 && (
+                    <Pagination className="mt-8">
+                        <PaginationContent>
+                            {currentPage > 1 && (
+                                <PaginationItem>
+                                    <PaginationPrevious
+                                        onClick={() => handlePageChange(currentPage - 1)}
+                                    />
+                                </PaginationItem>
+                            )}
+                            {Array.from({ length: totalPages }).map((_, index) => (
+                                <PaginationItem key={index}>
+                                    <PaginationLink
+                                        isActive={index + 1 === currentPage}
+                                        onClick={() => handlePageChange(index + 1)}
+                                    >
+                                        {index + 1}
+                                    </PaginationLink>
+                                </PaginationItem>
+                            ))}
+                            {currentPage < totalPages && (
+                                <PaginationItem>
+                                    <PaginationNext
+                                        onClick={() => handlePageChange(currentPage + 1)}
+                                    />
+                                </PaginationItem>
+                            )}
+                        </PaginationContent>
+                    </Pagination>
                 )}
-            </div>
-            {totalPages > 1 && (
-                <Pagination className="mt-8">
-                    <PaginationContent>
-                        {currentPage > 1 && (
-                            <PaginationItem>
-                                <PaginationPrevious
-                                    onClick={() => handlePageChange(currentPage - 1)}
-                                />
-                            </PaginationItem>
-                        )}
-                        {Array.from({ length: totalPages }).map((_, index) => (
-                            <PaginationItem key={index}>
-                                <PaginationLink
-                                    isActive={index + 1 === currentPage}
-                                    onClick={() => handlePageChange(index + 1)}
-                                >
-                                    {index + 1}
-                                </PaginationLink>
-                            </PaginationItem>
-                        ))}
-                        {currentPage < totalPages && (
-                            <PaginationItem>
-                                <PaginationNext
-                                    onClick={() => handlePageChange(currentPage + 1)}
-                                />
-                            </PaginationItem>
-                        )}
-                    </PaginationContent>
-                </Pagination>
-            )}
+            </Suspense>
         </div>
     );
 };
