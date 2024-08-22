@@ -1,5 +1,5 @@
 "use client";
-import { fetchBlogs, fetchBlogsByCategory, fetchCategories } from '@/axios/api';
+import { fetchBlogsByCategory, fetchCategories } from '@/axios/api';
 import LottiePlayer from '@/components/common/LottieAnimation/LottiePlayer';
 import Ripple from '@/components/magicui/ripple';
 import { IArticle, ICategory, ICollectionResponse } from '@/types';
@@ -8,14 +8,26 @@ import CategoriesTab from './CategoriesTab';
 import Articles from './Articles';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useState } from 'react';
-import { GoArrowUpRight } from 'react-icons/go';
+import {
+    Pagination,
+    PaginationContent,
+    PaginationItem,
+    PaginationLink,
+    PaginationPrevious,
+    PaginationNext,
+    PaginationEllipsis,
+} from '@/components/ui/pagination'; // Import your custom pagination components
+import { useSearchParams } from 'next/navigation';
 
 const BlogContent = () => {
-
     const queryClient = useQueryClient();
-
-    // State to track selected category
+    const searchParams = useSearchParams();
+    // State to track selected category and pagination
     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const pageSize = 6; // Define your page size
+
+    const query = searchParams.get("query") || ""; // Get the search query from the URL
 
     // Fetch categories
     const { data: categoryData, error: categoryError, isLoading: categoryLoading } = useQuery<ICollectionResponse<ICategory[]>>({
@@ -24,18 +36,23 @@ const BlogContent = () => {
         staleTime: 1000 * 60 * 5,  // 5 minutes
     });
 
-    // Fetch blogs based on selected category
+    // Fetch blogs based on selected category, search query, and page
     const { data: blogData, error: blogError, isLoading: blogLoading } = useQuery<ICollectionResponse<IArticle[]>>({
-        queryKey: ['blogs', selectedCategory],
-        queryFn: () => selectedCategory !== null ? fetchBlogsByCategory(selectedCategory, '') : fetchBlogs(),
+        queryKey: ['blogs', selectedCategory, currentPage, query],
+        queryFn: () => fetchBlogsByCategory(selectedCategory, query, currentPage, pageSize),
         staleTime: 1000 * 60 * 5,  // 5 minutes
     });
 
     // Handler for category selection
     const handleCategorySelect = (categoryId: number | null) => {
         setSelectedCategory(categoryId);
-        // Optionally prefetch the data for the selected category
-        queryClient.prefetchQuery({ queryKey: ['blogs'], queryFn: () => fetchBlogsByCategory(categoryId, '') });
+        setCurrentPage(1); // Reset to first page when changing category
+        queryClient.prefetchQuery({ queryKey: ['blogs'], queryFn: () => fetchBlogsByCategory(categoryId, query, 1, pageSize) });
+    };
+
+    // Handler for page change
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
     };
 
     if (categoryLoading) {
@@ -58,14 +75,11 @@ const BlogContent = () => {
             </div>
         );
     }
+
+    const totalPages = blogData?.meta?.pagination?.pageCount || 1;
+
     return (
         <div className='h-full w-full pt-[120px] max-w-7xl mx-auto px-10'>
-            <div className='flex text-white items-center justify-between gap-2 border-b border-neutral-300 mb-12 sm:mb-14 pb-4'>
-                <div className="flex items-center">
-                    <div className="flex h-8 w-8 relative items-center justify-center"><span className="animate-ping absolute h-8 w-8 rounded-full bg-[#7124b0] opacity-75"></span><span className="relative rounded-full h-8 w-8 bg-[#8327e6]"></span></div>
-                    <h1 className="ml-2 text-4xl tracking-tighter font-semibold">Explore Blogs</h1>
-                </div>
-            </div>
             {!!categoryData && (
                 <CategoriesTab
                     data={categoryData}
@@ -73,7 +87,7 @@ const BlogContent = () => {
                     selectedCategory={selectedCategory}
                 />
             )}
-            <div className='mt-10 w-full grid grid-cols-4 gap-4 fade-in'>
+            <div className='mt-10 w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {blogLoading ? (
                     <ArticleSkeleton count={4} />
                 ) : blogData && blogData.data.length > 0 ? (
@@ -82,10 +96,40 @@ const BlogContent = () => {
                     ))
                 ) : (
                     <div className='w-full h-full flex items-center justify-center'>
-                        <p className='text-white text-center w-full mt-20'>No articles found for this category.</p>
+                        <p>No articles found for this category.</p>
                     </div>
                 )}
             </div>
+            {totalPages > 1 && (
+                <Pagination className="mt-8">
+                    <PaginationContent>
+                        {currentPage > 1 && (
+                            <PaginationItem>
+                                <PaginationPrevious
+                                    onClick={() => handlePageChange(currentPage - 1)}
+                                />
+                            </PaginationItem>
+                        )}
+                        {Array.from({ length: totalPages }).map((_, index) => (
+                            <PaginationItem key={index}>
+                                <PaginationLink
+                                    isActive={index + 1 === currentPage}
+                                    onClick={() => handlePageChange(index + 1)}
+                                >
+                                    {index + 1}
+                                </PaginationLink>
+                            </PaginationItem>
+                        ))}
+                        {currentPage < totalPages && (
+                            <PaginationItem>
+                                <PaginationNext
+                                    onClick={() => handlePageChange(currentPage + 1)}
+                                />
+                            </PaginationItem>
+                        )}
+                    </PaginationContent>
+                </Pagination>
+            )}
         </div>
     );
 };

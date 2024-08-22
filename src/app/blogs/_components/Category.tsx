@@ -15,7 +15,7 @@ const Category = ({ title, classNames, slug, isActive, onClick }: CategoryProps)
         <button
             onClick={onClick}
             className={cn(
-                'cursor-pointer text-white font-semibold tracking-tighter relative after:absolute after:bg-gray-200 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 text-xl',
+                'cursor-pointer text-white font-semibold tracking-tighter relative after:absolute after:bg-gray-200 after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300 text-md lg:text-xl',
                 isActive ? 'text-emerald-400' : '',
                 classNames
             )}
