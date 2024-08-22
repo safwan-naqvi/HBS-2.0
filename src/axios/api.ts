@@ -1,13 +1,13 @@
 import api from "@/axios/index"
 import { IArticle, ICategory, ICollectionResponse } from "@/types";
 
+// Fetch categories
 export const fetchCategories = async (): Promise<ICollectionResponse<ICategory[]>> => {
     const { data: categories } = await api.get<ICollectionResponse<ICategory[]>>('/api/categories');
     return categories;
 };
 
-
-// Fetch blogs by category and search query
+// Fetch blogs by category
 export const fetchBlogsByCategory = async (categoryId: number | null, query: string): Promise<ICollectionResponse<IArticle[]>> => {
     const filters = categoryId ? `filters[category][id][$eq]=${categoryId}` : '';
     const { data: blogs } = await api.get<ICollectionResponse<IArticle[]>>(
@@ -16,7 +16,8 @@ export const fetchBlogsByCategory = async (categoryId: number | null, query: str
     return blogs;
 };
 
-export const fetchBlogs = async (): Promise<any> => {
+// Fetch all blogs (for initial load or "Recent" category)
+export const fetchBlogs = async (): Promise<ICollectionResponse<IArticle[]>> => {
     const { data: blogs } = await api.get<ICollectionResponse<IArticle[]>>(
         `/api/blogs?populate=*`
     );
@@ -24,8 +25,8 @@ export const fetchBlogs = async (): Promise<any> => {
 };
 
 export const fetchBlogBySlug = async (slug: string): Promise<any> => {
-    const { data: blogs } = await api.get<ICollectionResponse<IArticle[]>>(
-        `/api/blogs?${slug}&populate[image][fields][0]=url&populate[image][fields][1]=formats`
+    const { data: blog } = await api.get<ICollectionResponse<IArticle[]>>(
+        `/api/blogs?filters[slug][$eq]=${slug}&populate[image][fields][0]=url&populate[image][fields][1]=formats`
     );
-    return blogs;
+    return blog;
 };

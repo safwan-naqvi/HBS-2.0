@@ -1,25 +1,41 @@
 import React from 'react'
 import Category from './Category'
 import { usePathname, useSearchParams } from 'next/navigation'
+import { ICategory, ICollectionResponse } from '@/types';
 
-const CategoriesTab = ({ data: CategoryData }: any) => {
-    const pathname = usePathname();
-    const searchParams = useSearchParams();
-
-    // Get the active category from the search params (assuming 'category' is the key)
-    const activeCategory = searchParams.get('category');
-
-    const isActiveLink = (category: any) => {
-        return category.attributes.slug === activeCategory;
-    }
-    return (
-        <div className='flex items-center gap-6 mt-10'>
-            <Category title={"Recent"} slug={"/blogs"} classNames={`${pathname === '/blogs' ? 'text-emerald-400' : ""}`} />
-            {CategoryData?.data.map((category: any) =>
-                <Category title={category.attributes.title} slug={category.attributes.slug} key={category.id} classNames={`${isActiveLink(category) ? 'text-emerald-400' : ""}`} />
-            )}
-        </div>
-    )
+interface CategoriesTabProps {
+    data: ICollectionResponse<ICategory[]>;
+    onCategorySelect: (categoryId: number | null) => void;
+    selectedCategory: number | null;
 }
 
-export default CategoriesTab
+const CategoriesTab = ({ data: CategoryData, onCategorySelect, selectedCategory }: CategoriesTabProps) => {
+    const pathname = usePathname();
+
+    // Handler to set the selected category
+    const handleCategoryClick = (categoryId: number | null) => {
+        onCategorySelect(categoryId);
+    };
+
+    return (
+        <div className='flex items-center gap-6 mt-10'>
+            <Category
+                title="Recent"
+                slug="/blogs"
+                isActive={!selectedCategory}
+                onClick={() => handleCategoryClick(null)}
+            />
+            {CategoryData?.data.map((category: ICategory) =>
+                <Category
+                    key={category.id}
+                    title={category.attributes.title}
+                    slug={category.attributes.slug}
+                    isActive={selectedCategory === category.id}
+                    onClick={() => handleCategoryClick(category.id)}
+                />
+            )}
+        </div>
+    );
+};
+
+export default CategoriesTab;
