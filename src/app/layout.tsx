@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
-import "./globals.css";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import ActiveSectionContextProvider from "@/context/active-section-context";
-import SmoothScroll from "@/components/utils/SmoothScroll";
 import { Toaster } from "@/components/ui/toaster";
-
+import ActiveSectionContextProvider from "@/context/active-section-context";
+import TanstackProvider from "@/providers/TanstackProvider";
+import { Inter, Poppins } from "next/font/google";
+import Head from "next/head";
+import "./globals.css";
+import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 const poppins = Poppins({
@@ -27,13 +26,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <SmoothScroll>
-          <ActiveSectionContextProvider>
+        {/* <SmoothScroll> */}
+        <ActiveSectionContextProvider>
+          <TanstackProvider>
             <Header />
             {children}
             <Toaster />
-          </ActiveSectionContextProvider>
-        </SmoothScroll>
+          </TanstackProvider>
+        </ActiveSectionContextProvider>
+        {/* </SmoothScroll> */}
       </body>
     </html>
   );

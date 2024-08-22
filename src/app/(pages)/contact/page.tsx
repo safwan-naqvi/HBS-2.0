@@ -1,17 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import FormData from "./_components/FormData";
-import { DM_Sans } from "next/font/google";
 import clsx from "clsx";
+import { DM_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import { AnimatePresence } from "framer-motion";
+import FormData from "./_components/FormData";
 
 
-import styles from "./styles.module.scss";
-import Header from "@/components/layout/Header";
-import Preloader from "../_components/Preloader";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import styles from "./styles.module.scss";
 
 const dm_sans = DM_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -19,22 +15,10 @@ const dm_sans = DM_Sans({
 });
 
 export default function Contact() {
-  // const [isLoading, setIsLoading] = useState(true);
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
-  //   setTimeout(() => {
-  //     document.body.style.overflow = "auto";
-  //     setIsLoading(false);
-  //     document.body.style.cursor = "default";
-  //     window.scrollTo(0, 0);
-  //   }, 2000);
-  // }, []);
+
 
   return (
     <>
-      {/* <AnimatePresence mode="wait">
-        {isLoading && <Preloader pagename="Contact" />}
-      </AnimatePresence> */}
       <Header />
       <Toaster position="top-right" />
       <div className="min-h-screen py-[12rem] bg-[#0e0e0e] text-gray-50 fade-in">

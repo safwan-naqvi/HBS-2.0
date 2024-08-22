@@ -1,32 +1,18 @@
 "use client";
 
-import { AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState } from 'react'
-import Preloader from '../_components/Preloader';
-import SocialMedia from '@/components/utils/SocialMedia';
-import HeroContainer from './_components/HeroContainer';
-import ServiceGallery from './_components/Main/ServiceGallery';
 import { ParallaxScroll } from "@/components/common/ParallaxGrid/Parallax";
-import { GoArrowUpRight } from 'react-icons/go';
 import Footer from '@/components/layout/Footer';
 import { LeadForm } from '@/components/layout/LeadForm/LeadForm';
+import SocialMedia from '@/components/utils/SocialMedia';
+import { GoArrowUpRight } from 'react-icons/go';
+import HeroContainer from './_components/HeroContainer';
+import ServiceGallery from './_components/Main/ServiceGallery';
 export default function Portfolio() {
-    // const [isLoading, setIsLoading] = useState(true);
-    // useEffect(() => {
-    //     document.body.style.overflow = "hidden";
-    //     setTimeout(() => {
-    //         document.body.style.overflow = "auto";
-    //         setIsLoading(false);
-    //         document.body.style.cursor = "default";
-    //         window.scrollTo(0, 0);
-    //     }, 2000);
-    // }, []);
+
     return (
         <>
             <div className={"flex flex-col min-h-screen bg-background fade-in"}>
-                {/* <AnimatePresence mode="wait">
-                    {isLoading && <Preloader pagename="Portfolio" />}
-                </AnimatePresence> */}
+
                 <SocialMedia />
                 <HeroContainer />
                 <ServiceGallery />

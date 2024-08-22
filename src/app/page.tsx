@@ -20,6 +20,7 @@ import { Testimonials } from "@/components/common/Testimonials/testimonials";
 import { Faqs } from "@/components/layout/Faqs/Faqs";
 import { HomepageFaqs } from "@/lib/constantData";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
+import Head from "next/head";
 
 
 export default function Home() {

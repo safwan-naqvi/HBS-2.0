@@ -237,7 +237,7 @@ export const FooterQuickLinks = [
     label: "Career",
   },
   {
-    href: "/blog",
+    href: "/blogs",
     label: "Blog",
   },
 ];
