@@ -54,15 +54,3 @@ const page = async ({ params }: any) => {
 
 export default page
 
-
-interface MarkdownRendererProps {
-    content: string;
-}
-
-export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
-    return (
-        <div className="markdown-body">
-
-        </div>
-    );
-};
