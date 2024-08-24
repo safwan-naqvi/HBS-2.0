@@ -1,6 +1,8 @@
-
+import Footer from '@/components/layout/Footer';
 import BlogContent from './_components/BlogContent';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
+import Loading from '@/components/common/Loading';
 
 export const metadata: Metadata = {
     title: "HashBitStudio | Blogs",
@@ -10,13 +12,12 @@ export const metadata: Metadata = {
 
 const Blogs = () => {
     return (
-        <div>
-            <div className='w-full tracking-tight'>
+        <Suspense fallback={<Loading />}>
+            <div className='w-full tracking-tight fade-in'>
                 <BlogContent />
-                <div className='text-white fade-in max-w-7xl mx-auto px-10 lg:px-20'>
-                </div>
+                <Footer />
             </div>
-        </div>
+        </Suspense>
 
     );
 };

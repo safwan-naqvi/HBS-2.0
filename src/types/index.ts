@@ -1,4 +1,5 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { FC } from 'react';
 
 export interface ICategory {
     id: number;
@@ -89,3 +90,8 @@ export interface IQueryOptions {
         pageSize: number;
     };
 }
+
+export interface RichTextContentProps {
+    content: any; // Replace 'any' with a more specific type if you know the structure of your JSON
+}
+

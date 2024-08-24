@@ -3,7 +3,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const Articles = ({ article }: any) => {
-
     return (
         <Link href={`/blogs/${article.attributes.slug}`} className='bg-white/90 text-black group'>
             <div className='overflow-hidden h-[200px] w-full'>
@@ -13,6 +12,7 @@ const Articles = ({ article }: any) => {
                 <h3 className='text-xl tracking-tight font-semibold'>{article.attributes.Title}</h3>
                 <p className='text-sm truncate line-clamp-3 text-wrap'>{article.attributes.excerpt}</p>
             </div>
+            {/* <Image src={article.attributes.author.data.attributes.avatar.url} alt='article.attributes.Title' height={50} width={50} className='h-full w-full group-hover:scale-110 transition-all object-cover' /> */}
         </Link>
     )
 }

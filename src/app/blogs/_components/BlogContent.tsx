@@ -2,22 +2,21 @@
 import { fetchBlogsByCategory, fetchCategories } from '@/axios/api';
 import LottiePlayer from '@/components/common/LottieAnimation/LottiePlayer';
 import Ripple from '@/components/magicui/ripple';
-import { IArticle, ICategory, ICollectionResponse } from '@/types';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import CategoriesTab from './CategoriesTab';
-import Articles from './Articles';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Suspense, useState } from 'react';
 import {
     Pagination,
     PaginationContent,
     PaginationItem,
     PaginationLink,
-    PaginationPrevious,
     PaginationNext,
-    PaginationEllipsis,
+    PaginationPrevious
 } from '@/components/ui/pagination'; // Import your custom pagination components
+import { Skeleton } from '@/components/ui/skeleton';
+import { IArticle, ICategory, ICollectionResponse } from '@/types';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSearchParams } from 'next/navigation';
+import { Suspense, useState } from 'react';
+import Articles from './Articles';
+import CategoriesTab from './CategoriesTab';
 
 const BlogContent = () => {
     const queryClient = useQueryClient();
@@ -96,8 +95,8 @@ const BlogContent = () => {
                             <Articles key={article.id} article={article} />
                         ))
                     ) : (
-                        <div className='w-full h-full flex items-center justify-center'>
-                            <p>No articles found for this category.</p>
+                        <div className='w-full h-full flex items-center justify-center col-span-full'>
+                            <p className='text-2xl text-center font-light text-white'>No articles found for this category.</p>
                         </div>
                     )}
                 </div>
@@ -135,6 +134,9 @@ const BlogContent = () => {
         </div>
     );
 };
+
+
+
 
 export default BlogContent;
 

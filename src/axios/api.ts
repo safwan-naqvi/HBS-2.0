@@ -35,7 +35,14 @@ export const fetchBlogs = async (): Promise<ICollectionResponse<IArticle[]>> => 
 
 export const fetchBlogBySlug = async (slug: string): Promise<any> => {
     const { data: blog } = await api.get<ICollectionResponse<IArticle[]>>(
-        `/api/blogs?filters[slug][$eq]=${slug}&populate[image][fields][0]=url&populate[image][fields][1]=formats`
+        `/api/blogs?filters[slug][$eq]=${slug}&populate[image][fields][0]=url&populate[author][populate][avatar][fields][0]=url&populate=category`
+    );
+    return blog;
+};
+
+export const fetchRelatedBlogs = async (id: number, slug: string): Promise<any> => {
+    const { data: blog } = await api.get<ICollectionResponse<IArticle[]>>(
+        `/api/blogs?filters[category][id][$eq]=${id}&filters[slug][$ne]=${slug}&populate[image][fields][0]=url&populate[author][populate][avatar][fields][0]=url`
     );
     return blog;
 };
