@@ -4,6 +4,8 @@ import styles from "./style.module.scss";
 import { ourFields } from "@/lib/data";
 import Technologies from "./Tech";
 import RoundedButton from "@/components/layout/RoundedButton";
+import { AnimatedBeam } from "@/components/magicui/animated-beam";
+import { AnimatedBeamMultiple } from "@/components/common/AnimatedBeam/animatedBeam";
 
 interface HomeProps { }
 
@@ -90,24 +92,32 @@ const TechSection: React.FC<HomeProps> = () => {
           </svg>
         </div>
 
-        <div className={styles.description}>
-          <p>Smart Development</p>
-          <p>
-            Combining unique design and rich technology, we build digital
-            products exactly as they were designed, without shortcuts or
-            simplifications.
-          </p>
-        </div>
-        <div className={styles.tagsContainer}>
-          <p>Areas</p>
-          <div className={styles.tags}>
-            {ourFields.map((field, index) => {
-              return (
-                <RoundedButton key={index}>
-                  <p>{field}</p>
-                </RoundedButton>
-              );
-            })}
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-8">
+          <div className="col-span-1">
+            {/* <div className={styles.description}> */}
+            <div className="w-full">
+              <p className="text-md text-[#ad2550] font-semibold tracking-tighter">Smart Development</p>
+              <p className="text-xl font-light tracking-tight pt-4">
+                Combining unique design and rich technology, we build digital
+                products exactly as they were designed, without shortcuts or
+                simplifications.
+              </p>
+            </div>
+            <div className="w-full mt-8">
+              <p className="text-md text-[#ad2550] font-semibold tracking-tighter">Areas</p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {ourFields.map((field, index) => {
+                  return (
+                    <RoundedButton key={index}>
+                      <p>{field}</p>
+                    </RoundedButton>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="col-span-1">
+            <AnimatedBeamMultiple />
           </div>
         </div>
       </div>

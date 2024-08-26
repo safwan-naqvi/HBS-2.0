@@ -62,11 +62,11 @@ const Card = ({
           <div className={styles.description}>
             <h2 className={styles.heading}>{title}</h2>
             <p className={`${inter.className} my-2`}>{description}</p>
-            <ul className="grid grid-cols-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2">
               {services.map((service, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-2 mt-2 cursor-pointer hover:translate-x-2 group transition-all ease-in-out duration-300"
+                  className="flex items-center gap-2 mt-2 cursor-pointer hover:translate-x-2 group transition-all ease-in-out duration-300 px-2"
                 >
                   <div>
                     <BsFillArrowRightCircleFill className="-rotate-45 group-hover:rotate-0 transition-all h-6 w-6 group-hover:text-white" />
@@ -84,7 +84,7 @@ const Card = ({
 
           <div className={styles.imageContainer}>
             <motion.div className={styles.inner} style={{ scale: imageScale }}>
-              <Image fill src={`${src}`} alt="image" />
+              <img src={`${src}`} alt="image" />
             </motion.div>
           </div>
         </div>

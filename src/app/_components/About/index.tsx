@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div className="relative min-h-screen flex flex-col w-full max-w-screen-lg mx-auto items-center justify-center py-20 pointer-events-none">
       <h3 className="self-center mb-4 text-[#81046a]">About HBS</h3>
-      <div className="flex flex-col-reverse md:flow-row items-center justify-between px-10 lg:px-0">
+      <div className="flex flex-col-reverse md:flow-row items-center justify-between">
         <Character paragraph={paragraph} />
         <Image
           src={"/assets/Logo.svg"}

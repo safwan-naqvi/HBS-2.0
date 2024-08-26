@@ -56,7 +56,7 @@
 
       .imageContainer {
         position: relative;
-        width: 40%;
+        width: 100%;
         height: 100%;
         border-radius: 25px;
         overflow: hidden;
@@ -74,12 +74,14 @@
 
 @media (max-width: 768px) {
   .cardContainer {
-    height: 120vh;
+    height: 100vh;
     .card {
+      top: -15%;
       display: flex;
       flex-direction: column;
-      height: 80vh;
+      height: 550px;
       width: 90vw;
+      padding: 10px !important;
       .heading {
         text-align: center;
         margin: 0px;
@@ -89,20 +91,24 @@
         letter-spacing: -2px;
       }
       .body {
-        display: flex;
-        flex-direction: column-reverse;
+        display: grid;
+        grid-template-columns: 1fr;
         height: 100%;
-        margin-top: 20px;
+        margin-top: 8px;
         gap: 15px;
         .description {
+          order: 1;
           width: 100%;
+
           p {
             display: none;
           }
         }
         .imageContainer {
           width: 100%;
-          height: 100%;
+          height: 200px;
+          background-size: cover;
+          background-position: bottom center;
           border-radius: 25px;
           overflow: hidden;
         }

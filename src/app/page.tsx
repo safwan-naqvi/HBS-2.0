@@ -2,7 +2,6 @@
 
 import HomeLoader from "@/components/layout/Preloader";
 import SocialMedia from "@/components/utils/SocialMedia";
-import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Hero } from "./_components/Hero/Hero";
 import Introduction from "./_components/Intro/Introduction";
@@ -21,6 +20,8 @@ import { Faqs } from "@/components/layout/Faqs/Faqs";
 import { HomepageFaqs } from "@/lib/constantData";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
 import Head from "next/head";
+import { AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 
 export default function Home() {
@@ -81,7 +82,7 @@ export default function Home() {
       src: "/assets/clients/interactive.svg",
     }
   ]
-
+  const isMediumScreen = useMediaQuery({ query: '(min-width: 768px)' })
   return (
     <>
       <AnimatePresence mode="wait">
@@ -93,13 +94,13 @@ export default function Home() {
         <Introduction />
         <div className="my-20 w-full">
           <Clients items={images} speed="slow" />
-          <Clients items={imagesTwo} speed="slow" direction="right" />
+          {isMediumScreen && <Clients items={imagesTwo} speed="slow" direction="right" />}
         </div>
         <About />
         <TechSection />
         <Showcase />
         {/* <LetsConnect /> */}
-        {/* <div className="flex items-center justify-center py-20 w-full overflow-hidden bg-gradient-to-bl from-[#3085df] via-[#0450a2] to-[#0c6acf]">
+        <div className="flex items-center justify-center py-20 w-full overflow-hidden bg-gradient-to-bl from-[#3085df] via-[#0450a2] to-[#0c6acf] mt-10">
           <Link href={"/contact"}>
             <VelocityScroll
               text="Connect With Us"
@@ -107,8 +108,8 @@ export default function Home() {
               className="font-display text-center space-y-8 text-7xl font-semibold tracking-tight text-white drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
             />
           </Link>
-        </div> */}
-        <ServiceSection />
+        </div>
+        {/* <ServiceSection /> */}
         <div className="bg-[#111] relative w-full">
           <h2 className="text-3xl w-full text-center md:text-6xl font-semibold tracking-tighter text-[#ab2767] drop-shadow-lg absolute top-0 translate-y-1/2 md:-translate-y-2/3 left-1/2 -translate-x-1/2">What our Clients Says?</h2>
           <Testimonials />
