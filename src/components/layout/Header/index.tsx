@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <>
-      <div ref={header} className={clsx(styles.header, scrollDir === "down" ? "-translate-y-full" : "translate-y-0")} >
+      <div ref={header} className={clsx(styles.header, !isSmallDevice && scrollDir === "down" ? "-translate-y-full" : "translate-y-0")} >
         <Link href={"/"} className="cursor-pointer">
           <Image src={"/assets/Logo.svg"} alt="Logo" height={0} width={0} style={{ width: "60px", height: "60px" }} />
         </Link>
