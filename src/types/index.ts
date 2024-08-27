@@ -79,6 +79,11 @@ export interface IArticle {
     attributes: IArticlesAttribute;
 }
 
+export interface IArticleMetadata {
+    Title: string;
+    excerpt: string;
+}
+
 export type TDirection = 1 | -1;
 
 export interface IQueryOptions {

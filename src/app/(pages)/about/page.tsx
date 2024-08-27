@@ -1,7 +1,6 @@
 "use client";
 
 import HorizontalScroll from "@/components/common/HorizontalScroll";
-import Footer from "@/components/layout/Footer";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
 import SocialMedia from "@/components/utils/SocialMedia";
 import AboutCompany from "./_components/AboutCompany";
@@ -9,6 +8,7 @@ import HeroContainer from "./_components/HeroContainer";
 import OurSuccess from "./_components/OurSuccess";
 import OurTeams from "./_components/OurTeam";
 import WhatDifference from "./_components/WhatDifference";
+import Footer from "@/components/layout/Footer";
 
 export default function About() {
 

@@ -5,9 +5,9 @@ import { Toaster } from "react-hot-toast";
 import FormData from "./_components/FormData";
 
 
-import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import styles from "./styles.module.scss";
+import Footer from "@/components/layout/Footer";
 
 const dm_sans = DM_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],

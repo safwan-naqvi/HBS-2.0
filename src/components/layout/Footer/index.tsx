@@ -13,7 +13,7 @@ const inter = Inter({
 
 export default function Footer() {
   return (
-    <section className="relative w-full pt-14 pb-2 px-0 md:px-10 lg:px-20 mt-10 text-gray-300 box-border">
+    <footer className="relative w-full h-full pt-14 pb-2 px-0 md:px-10 lg:px-20 mt-10 text-gray-300 box-border">
       <div className="grid grid-cols-12 w-full">
         <div className="col-span-12 md:col-span-6 w-full items-center pb-10 flex flex-col gap-2 md:items-start">
           <Image
@@ -68,6 +68,6 @@ export default function Footer() {
         </div>
         <HoverMask />
       </div> */}
-    </section>
+    </footer>
   );
 }

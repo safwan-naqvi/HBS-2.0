@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const Clients = ({
@@ -89,7 +90,7 @@ export const Clients = ({
                         className="w-[100px] max-w-full relative flex-shrink-0 px-8 py-2 md:w-[200px]"
                         key={index}
                     >
-                        <img src={item.src} alt={item.alt} className="h-20 aspect-square object-contain invert" />
+                        <Image src={item.src} alt={item.alt} height={0} width={0} className="h-20 aspect-square object-contain invert" />
                     </li>
                 ))}
             </ul>

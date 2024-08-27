@@ -1,8 +1,7 @@
-import Footer from '@/components/layout/Footer';
-import BlogContent from './_components/BlogContent';
+import Loading from '@/components/common/Loading';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-import Loading from '@/components/common/Loading';
+import BlogContent from './_components/BlogContent';
 
 export const metadata: Metadata = {
     title: "HashBitStudio | Blogs",
@@ -15,7 +14,7 @@ const Blogs = () => {
         <Suspense fallback={<Loading />}>
             <div className='w-full tracking-tight fade-in'>
                 <BlogContent />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </Suspense>
 

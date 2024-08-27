@@ -88,44 +88,49 @@ export default function Home() {
       <AnimatePresence mode="wait">
         {isLoading && <HomeLoader />}
       </AnimatePresence>
-      <main className="flex h-full flex-col items-center justify-between">
-        <SocialMedia />
-        <Hero />
-        <Introduction />
-        <div className="my-20 w-full">
+      <div>
+        <div className="flex h-full flex-col items-center justify-between">
+          <SocialMedia />
+          <Hero />
+          <Introduction />
+          {/* <div className="my-20 w-full">
           <Clients items={images} speed="slow" />
           {isMediumScreen && <Clients items={imagesTwo} speed="slow" direction="right" />}
-        </div>
-        <About />
-        <TechSection />
-        <Showcase />
-        {/* <LetsConnect /> */}
-        <div className="flex items-center justify-center py-20 w-full overflow-hidden bg-gradient-to-bl from-[#3085df] via-[#0450a2] to-[#0c6acf] mt-10">
-          <Link href={"/contact"}>
-            <VelocityScroll
-              text="Connect With Us"
-              default_velocity={3}
-              className="font-display text-center space-y-8 text-7xl font-semibold tracking-tight text-white drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
-            />
-          </Link>
-        </div>
-        {/* <ServiceSection /> */}
-        <div className="bg-[#111] relative w-full">
-          <h2 className="text-3xl w-full text-center md:text-6xl font-semibold tracking-tighter text-[#ab2767] drop-shadow-lg absolute top-0 translate-y-1/2 md:-translate-y-2/3 left-1/2 -translate-x-1/2">What our Clients Says?</h2>
-          <Testimonials />
-        </div>
-        <div className="text-white w-full md:max-w-7xl py-40 px-10 md:px-20 flex items-center">
-          <Faqs Faq={HomepageFaqs} />
-        </div>
-        <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
-          <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">Have a Project Idea?</h2>
-          <img src="/assets/contact_bg.webp" alt="Contact Image" className="object-cover absolute bottom-0 left-0" />
-          <div className="mt-10 md:mt-4 z-10">
-            <LeadForm />
+        </div> */}
+          <About />
+          <TechSection />
+          <Showcase />
+          {/* <LetsConnect /> */}
+          <div className="flex items-center justify-center py-20 w-full overflow-hidden bg-gradient-to-bl from-[#3085df] via-[#0450a2] to-[#0c6acf] mt-10">
+            <Link href={"/contact"}>
+              <VelocityScroll
+                text="Connect With Us"
+                default_velocity={3}
+                className="font-display text-center space-y-8 text-7xl font-semibold tracking-tight text-white drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]"
+              />
+            </Link>
+          </div>
+          {/* <ServiceSection /> */}
+          <div className="bg-[#111] relative w-full">
+            <h2 className="text-3xl w-full text-center md:text-6xl font-semibold tracking-tighter text-[#ab2767] drop-shadow-lg absolute top-0 translate-y-1/2 md:-translate-y-2/3 left-1/2 -translate-x-1/2">What our Clients Says?</h2>
+            <Testimonials />
+          </div>
+          <div className="text-white w-full md:max-w-7xl py-40 px-10 md:px-20 flex items-center">
+            <Faqs Faq={HomepageFaqs} />
+          </div>
+          <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
+            <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">Have a Project Idea?</h2>
+            <img src="/assets/contact_bg.webp" alt="Contact Image" className="object-cover absolute bottom-0 left-0" />
+            <div className="mt-10 md:mt-4 z-10">
+              <LeadForm />
+            </div>
           </div>
         </div>
         <Footer />
-      </main>
+      </div>
+
+
+
     </>
 
   );

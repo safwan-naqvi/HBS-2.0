@@ -1,12 +1,12 @@
 "use client";
 
 import { ParallaxScroll } from "@/components/common/ParallaxGrid/Parallax";
-import Footer from '@/components/layout/Footer';
 import { LeadForm } from '@/components/layout/LeadForm/LeadForm';
 import SocialMedia from '@/components/utils/SocialMedia';
 import { GoArrowUpRight } from 'react-icons/go';
 import HeroContainer from './_components/HeroContainer';
 import ServiceGallery from './_components/Main/ServiceGallery';
+import Footer from "@/components/layout/Footer";
 export default function Portfolio() {
 
     return (

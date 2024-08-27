@@ -1,4 +1,4 @@
-import { fetchBlogBySlug, fetchRelatedBlogs } from '@/axios/api';
+import { fetchBlogBySlug, fetchBlogBySlugMetaData, fetchRelatedBlogs } from '@/axios/api';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { formatData } from '@/utils/utils';
@@ -7,6 +7,16 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { RichTextContent } from '../_components/RickTextContent';
+import { Metadata } from 'next';
+
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+    const blog = await fetchBlogBySlugMetaData(params.slug);
+    return {
+        title: blog.Title,
+        description: blog.excerpt,
+    }
+}
 
 const page = async ({ params }: any) => {
     const blog = await fetchBlogBySlug(params.slug)

@@ -1,3 +1,4 @@
+import { getAuthToken } from "@/axios/services/get-token";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -81,4 +82,23 @@ export function getStrapiMedia(url: string | null) {
   if (url.startsWith("data:")) return url;
   if (url.startsWith("http") || url.startsWith("//")) return url;
   return `${getStrapiURL()}${url}`;
+}
+
+async function fetchData(url: string) {
+  const headers = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_BACKEND_API_KEY}`,
+    },
+  };
+
+  try {
+    const response = await fetch(url, headers);
+    const data = await response.json();
+    return flattenAttributes(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error; // or return null;
+  }
 }

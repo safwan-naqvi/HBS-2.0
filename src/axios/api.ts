@@ -1,5 +1,5 @@
 import api from "@/axios/index"
-import { IArticle, ICategory, ICollectionResponse } from "@/types";
+import { IArticle, IArticleMetadata, ICategory, ICollectionResponse } from "@/types";
 
 // Fetch categories
 export const fetchCategories = async (): Promise<ICollectionResponse<ICategory[]>> => {
@@ -37,6 +37,16 @@ export const fetchBlogBySlug = async (slug: string): Promise<any> => {
     const { data: blog } = await api.get<ICollectionResponse<IArticle[]>>(
         `/api/blogs?filters[slug][$eq]=${slug}&populate[image][fields][0]=url&populate[author][populate][avatar][fields][0]=url&populate=category`
     );
+    return blog;
+};
+
+export const fetchBlogBySlugMetaData = async (slug: string): Promise<any> => {
+    const { data } = await api.get<any>(
+        `/api/blogs?filters[slug][$eq]=${slug}&fields[0]=Title&fields[1]=excerpt`
+    );
+    // Extract the relevant fields
+    const blog = data.data?.[0]?.attributes;
+    console.log(blog)
     return blog;
 };
 

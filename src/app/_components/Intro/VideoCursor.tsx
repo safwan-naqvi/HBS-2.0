@@ -45,7 +45,7 @@ const VideoCursor: React.FC<VideoCursorProps> = ({ isVisible, isPlaying }) => {
             });
             rotationControls.stop();
         }
-    }, [isVisible, controls]);
+    }, [isVisible, controls, rotationControls]);
 
     return (
         <motion.div

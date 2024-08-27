@@ -7,6 +7,7 @@ import Head from "next/head";
 import "./globals.css";
 import { Metadata } from "next";
 import SmoothScroll from "@/components/utils/SmoothScroll";
+import Footer from "@/components/layout/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 const poppins = Poppins({
