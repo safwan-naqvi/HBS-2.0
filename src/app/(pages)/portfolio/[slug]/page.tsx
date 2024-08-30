@@ -1,0 +1,228 @@
+import React from "react";
+import Footer from "@/components/layout/Footer";
+import { Metadata } from "next";
+import {
+    fetchPortfolioBySlug,
+    fetchPortfolioBySlugMetaData,
+    fetchRelatedPortfolioItems,
+} from "@/axios/api";
+import { truncateDescription } from "@/utils/utils";
+import WordPullUp from "@/components/magicui/word-pull-up";
+import { notFound } from "next/navigation";
+import { FaQuoteLeft } from "react-icons/fa";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
+import RelatedProducts from "../_components/RelatedProducts";
+import Link from "next/link";
+import { FaExternalLinkSquareAlt } from "react-icons/fa";
+import { RichTextContent } from "@/app/blogs/_components/RickTextContent";
+
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+    const portfolio = await fetchPortfolioBySlugMetaData(params.slug);
+    return {
+        title: portfolio.title,
+        description: truncateDescription(portfolio.description),
+    };
+}
+const page = async ({ params }: any) => {
+    const portfolioData = await fetchPortfolioBySlug(params.slug);
+    if (!portfolioData?.data[0]) {
+        notFound();
+    }
+    let relatedBlogs = null;
+    if (portfolioData?.data[0]) {
+        relatedBlogs = await fetchRelatedPortfolioItems(
+            portfolioData?.data[0].attributes.portfolio.data.id,
+            params.slug
+        );
+    }
+
+    // const blogsToDisplay = relatedBlogs?.data.length > 3 ? getRandomBlogs(relatedBlogs.data, 3) : relatedBlogs?.data;
+    return (
+        <div className="mt-[80px]">
+            <div className="container w-full flex items-center justify-between gap-8 flex-wrap py-20 px-10 h-[60vh]">
+                <div className="text-white space-y-1">
+                    <p className="tracking-wide font-thin text-2xl uppercase">Project</p>
+                    <h3 className="text-xl font-semibold tracking-tight">
+                        {portfolioData?.data[0].attributes.portfolio.data.attributes.title}
+                    </h3>
+                </div>
+                <WordPullUp
+                    className="text-5xl text-[#8542cc] font-bold max-w-5xl tracking-tighten md:text-6xl md:leading-[5rem]"
+                    words={portfolioData?.data[0].attributes.title}
+                />
+            </div>
+            <div className="relative py-20 bg-black px-10 sm:px-16 md:px-20 lg:px-40 mt-40 min-h-[60vh]">
+                <img
+                    src={portfolioData?.data[0].attributes.images.data[0].attributes.url}
+                    alt="Image"
+                    className="w-[85%] max-w-[1200px] object-cover aspect-video absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
+                />
+                <div className="py-10 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8 mt-[6rem] sm:mt-[10rem] md:mt-[16rem] lg:mt-[20rem] xl:mt-[28rem]">
+                    <div className="space-y-2">
+                        <h3 className="font-light uppercase text-white/80 text-sm md:text-md tracking-wide">
+                            Client
+                        </h3>
+                        <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                            {portfolioData?.data[0].attributes.clientName}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                            Category
+                        </h3>
+                        <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                            {portfolioData?.data[0].attributes.category}
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                            Live View
+                        </h3>
+                        <a
+                            href={portfolioData?.data[0].attributes.url}
+                            className="text-lg md:text-xl flex items-center tracking-tight font-semibold text-white"
+                        >
+                            See Live <FaExternalLinkSquareAlt className="ml-2" />
+                        </a>
+                    </div>
+                    {!!portfolioData?.data[0].attributes.timeline && (
+                        <div className="space-y-2">
+                            <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                                Timeline
+                            </h3>
+                            <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                                {portfolioData?.data[0].attributes.timeline}
+                            </p>
+                        </div>
+                    )}
+
+                    {!!portfolioData?.data[0].attributes.services && (
+                        <div className="space-y-2">
+                            <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                                Services We Provided
+                            </h3>
+                            {portfolioData?.data[0].attributes.services.services.map(
+                                (service: any) => (
+                                    <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                                        {service.title}
+                                    </p>
+                                )
+                            )}
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className="bg-[#111111] text-white w-full py-20 px-10 md:px-20 lg:px-40 grid grid-cols-1 lg:grid-cols-6 gap-8">
+                <h2 className="text-xl lg:text-2xl font-semibold tracking-tight col-span-2">
+                    About The Project
+                </h2>
+                <div className="col-span-4">
+                    <RichTextContent
+                        content={portfolioData?.data[0].attributes.about}
+                        customClassName="text-xl lg:text-2xl tracking-wide font-light leading-9 pb-4"
+                    />
+                </div>
+            </div>
+            <div className="w-full bg-white pb-20">
+                <img
+                    src="https://cdn.prod.website-files.com/643f7373d3f6653157617339/65027eea4b5b652c8d85aa24_one-link-nft-ui-ux-case-study-2-p-2000.webp"
+                    alt="Cover"
+                    className="w-full h-full object-cover"
+                />
+                <div className="bg-white text-black py-40 px-10 md:px-20 lg:px-40 space-y-8">
+                    {!!portfolioData?.data[0].attributes.problems && (
+                        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 pb-6">
+                            <h3 className="text-xl lg:text-2xl font-semibold tracking-tight col-span-2">
+                                Problems
+                            </h3>
+                            <p className="col-span-4 text-xl lg:text-2xl tracking-tight lg:tracking-wide lg:font-light font-medium leading-9">
+                                {portfolioData?.data[0].attributes.problems}
+                            </p>
+                        </div>
+                    )}
+                    {!!portfolioData?.data[0].attributes.challanges && (
+                        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 pb-6">
+                            <h3 className="text-xl lg:text-2xl font-semibold tracking-tight col-span-2">
+                                Challenges
+                            </h3>
+                            <p className="col-span-4 text-xl lg:text-2xl tracking-tight lg:tracking-wide lg:font-light font-medium leading-9">
+                                {portfolioData?.data[0].attributes.challanges}
+                            </p>
+                        </div>
+                    )}
+                    {!!portfolioData?.data[0].attributes.solutions && (
+                        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 pb-6">
+                            <h3 className="text-xl lg:text-2xl font-semibold tracking-tight col-span-2">
+                                Solutions
+                            </h3>
+                            <p className="col-span-4 text-xl lg:text-2xl tracking-tight lg:tracking-wide lg:font-light font-medium leading-9">
+                                {portfolioData?.data[0].attributes.solutions}
+                            </p>
+                        </div>
+                    )}
+                    <div className="grid grid-cols-2 gap-10">
+                        {portfolioData?.data[0].attributes.gallery.data.map((item: any, index: number) => (
+                            <div
+                                key={index}
+                                className={`overflow-hidden group ${index === 0 ? 'col-span-2' : 'col-span-1'}`}
+                            >
+                                <img
+                                    src={item.attributes.url}
+                                    alt={item.attributes.alternativeText || `Gallery Image ${index + 1}`}
+                                    className="group-hover:scale-105 transition-all w-full"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#671ac4] shadow-2xl">
+                    <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+                        <FaQuoteLeft className="text-7xl text-white shrink-0" />
+                        <div className="space-y-10">
+                            <p className="text-2xl lg:text-3xl font-medium tracking-tight max-w-4xl leading-9 text-white">
+                                We were genuinely impressed by the exceptional 3D illustrations
+                                in the NFT marketplace. The illustrations brought a new level of
+                                depth and immersion to the platform, captivating our users.
+                            </p>
+                            <div className="flex gap-4 items-center text-white">
+                                <Avatar className="h-20 w-20">
+                                    <AvatarImage
+                                        src="https://github.com/shadcn.png"
+                                        alt="@shadcn"
+                                    />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                                <div className="flex-col justify-between">
+                                    <p className="text-xl font-bold tracking-tight">
+                                        Lorendan Stefan
+                                    </p>
+                                    <span className="tracking-tight font-light">
+                                        CEO and Founder, One Link
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
+                <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">
+                    Have a Project Idea?
+                </h2>
+                <img
+                    src="/assets/contact_bg.webp"
+                    alt="Contact Image"
+                    className="object-cover absolute bottom-0 left-0"
+                />
+                <div className="mt-10 md:mt-4 z-10">
+                    <LeadForm />
+                </div>
+            </div>
+            <RelatedProducts />
+            <Footer />
+        </div>
+    );
+};
+
+export default page;

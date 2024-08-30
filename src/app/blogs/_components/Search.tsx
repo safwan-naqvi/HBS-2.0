@@ -49,7 +49,7 @@ export function Search() {
     return (
         <div
             ref={containerRef}
-            className={`relative flex items-center justify-start h-12 w-${isFocused ? "64" : "12"} max-w-64 rounded-full transition-all duration-500 transform ${isFocused ? "bg-white" : "bg-transparent"}`}
+            className={`relative flex items-center justify-start h-12 w-${isFocused ? "full" : "12"} max-w-48 md:max-w-64 rounded-full transition-all duration-500 transform ${isFocused ? "bg-white" : "bg-transparent"}`}
         >
             <CiSearch
                 className={cn("absolute h-12 w-12 rounded-full p-2 cursor-pointer", `${isFocused ? "bg-transparent text-black" : "text-white bg-white/30"}`)}
@@ -59,7 +59,7 @@ export function Search() {
                 ref={inputRef}
                 type="text"
                 placeholder="Search"
-                className={`absolute left-[50px] rounded-full h-full bg-transparent text-gray-800 p-1 outline-none border-none transition-all duration-500 transform ${isFocused ? "w-52" : "w-0"}`}
+                className={`absolute left-[50px] rounded-full h-full bg-transparent text-gray-800 p-1 outline-none border-none transition-all duration-500 transform ${isFocused ? "w-32 md:w-52" : "w-0"}`}
                 onChange={(e) => handleSearch(e.target.value)}
                 defaultValue={searchParams.get("query")?.toString()}
                 onBlur={() => setIsFocused(false)}

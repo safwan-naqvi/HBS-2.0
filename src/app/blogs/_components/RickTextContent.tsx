@@ -1,10 +1,13 @@
-// RichTextContent.tsx
 import { FC, ReactNode } from 'react';
 import { RichTextContentProps } from '@/types';
 import { cn } from '@/lib/utils';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 
-export const RichTextContent: FC<RichTextContentProps> = ({ content }) => {
+interface RichTextContentPropsWithClassName extends RichTextContentProps {
+    customClassName?: string;
+}
+
+export const RichTextContent: FC<RichTextContentPropsWithClassName> = ({ content, customClassName }) => {
     if (!content) return null;
 
     const renderChildren = (children: any[]): ReactNode => {
@@ -26,7 +29,7 @@ export const RichTextContent: FC<RichTextContentProps> = ({ content }) => {
                     return <HeadingTag key={index} className={cn(`${headingLevel === "h1" ? "text-3xl lg:text-5xl" : headingLevel === "h2" ? "text-2xl lg:text-4xl" : headingLevel === "h3" ? "text-xl lg:text-2xl" : headingLevel === "h4" ? "text-lg lg:text-2xl" : headingLevel === "h5" ? "text-md lg:text-xl" : "text-md lg:text-lg"}`, "py-4 font-semibold tracking-tight")}>{renderChildren(block.children)}</HeadingTag>;
 
                 case 'paragraph':
-                    return <p key={index} className='text-md tracking-tight'>{renderChildren(block.children)}</p>;
+                    return <p key={index} className={cn('text-md tracking-tight', customClassName)}>{renderChildren(block.children)}</p>;
 
                 case 'list':
                     const ListTag = block.format === 'unordered' ? 'ul' : 'ol';

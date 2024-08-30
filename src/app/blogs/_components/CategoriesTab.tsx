@@ -20,7 +20,7 @@ const CategoriesTab = ({ data: CategoryData, onCategorySelect, selectedCategory 
 
     return (
         <div className='flex flex-col lg:flex-row items-center gap-6 mt-10'>
-            <div className='flex items-center gap-6'>
+            <div className='flex items-center gap-6 flex-wrap'>
                 <Category
                     title="Recent"
                     slug="/blogs"

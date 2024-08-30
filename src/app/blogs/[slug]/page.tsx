@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { IoChevronBackCircleSharp } from "react-icons/io5";
 import { RichTextContent } from '../_components/RickTextContent';
 import { Metadata } from 'next';
+import Footer from '@/components/layout/Footer';
 
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
@@ -34,7 +35,7 @@ const page = async ({ params }: any) => {
     };
     const blogsToDisplay = relatedBlogs?.data.length > 2 ? getRandomBlogs(relatedBlogs.data, 2) : relatedBlogs?.data;
     return (
-        <div className='max-w-7xl mx-auto w-full p-8 fade-in'>
+        <div className='max-w-7xl mx-auto w-full p-2 fade-in'>
             <section
                 id="section"
                 className="py-24 sm:py-24 relative w-full justify-center flex items-center"
@@ -44,7 +45,7 @@ const page = async ({ params }: any) => {
                     className=" px-6 sm:px-24 w-full h-full flex flex-col items-center"
                 >
                     <div className="flex flex-col w-full">
-                        <div className="flex flex-row items-center gap-2 text-white border-b-white border-b-2 pb-5 justify-between">
+                        <div className="flex flex-col md:flex-row items-start gap-6 text-white border-b-white border-b-2 pb-5 justify-between">
                             <Link href="/blogs" className='flex items-center gap-2 group'>
                                 <IoChevronBackCircleSharp className='h-8 w-8 group-hover:text-[#782d6b] transition-all' />
                                 <span className='tracking-tighter group-hover:text-[#782d6b] transition-all'>Go Back</span>
@@ -60,8 +61,6 @@ const page = async ({ params }: any) => {
                                     <p className='text-sm tracking-tighter'>{formatData(blog?.data[0]?.attributes?.updatedAt)}</p>
                                 </div>
                             </div>
-
-
                         </div>
                         <div className="py-6">
                             <h1 className="text-3xl md:text-4xl lg:text-6xl text-white font-semibold leading-10 tracking-tight">
@@ -121,6 +120,7 @@ const page = async ({ params }: any) => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </div>
     )
 }

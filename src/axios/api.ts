@@ -1,5 +1,6 @@
 import api from "@/axios/index"
 import { IArticle, IArticleMetadata, ICategory, ICollectionResponse } from "@/types";
+import { shuffleArray } from "@/utils/utils";
 
 // Fetch categories
 export const fetchCategories = async (): Promise<ICollectionResponse<ICategory[]>> => {
@@ -44,7 +45,6 @@ export const fetchBlogBySlugMetaData = async (slug: string): Promise<any> => {
     const { data } = await api.get<any>(
         `/api/blogs?filters[slug][$eq]=${slug}&fields[0]=Title&fields[1]=excerpt`
     );
-    // Extract the relevant fields
     const blog = data.data?.[0]?.attributes;
     console.log(blog)
     return blog;
@@ -55,4 +55,47 @@ export const fetchRelatedBlogs = async (id: number, slug: string): Promise<any> 
         `/api/blogs?filters[category][id][$eq]=${id}&filters[slug][$ne]=${slug}&populate[image][fields][0]=url&populate[author][populate][avatar][fields][0]=url`
     );
     return blog;
+};
+
+export const fetchPortfolios = async (slug: string): Promise<any> => {
+    const { data: portfolios } = await api.get<any>(
+        `/api/profile-items?sort[0]=publishedAt:desc&filters[portfolio][slug][$eq]=${slug}&populate[images][fields][0]=url&fields[0]=title&fields[1]=slug`
+    );
+    return portfolios;
+};
+
+export const fetchPortfolioBySlugMetaData = async (slug: string): Promise<any> => {
+    const { data } = await api.get<any>(
+        `/api/profile-items?filters[slug][$eq]=${slug}&fields[0]=title&fields[1]=description`
+    );
+    const portfolioMeta = data.data?.[0]?.attributes;
+    return portfolioMeta;
+};
+
+export const fetchPortfolioBySlug = async (slug: string): Promise<any> => {
+    const { data: blog } = await api.get<any>(
+        `https://cms.hashbitstudio.com/api/profile-items?filters[slug][$eq]=${slug}&populate[images][fields][0]=url&populate[portfolio][fields][0]=title&populate[coverimage][fields][0]=url&populate[gallery][fields][0]=alternativeText&populate[gallery][fields][1]=url`
+    );
+    return blog;
+};
+
+// Fetch random portfolios excluding the currently opened one
+export const fetchRelatedPortfolioItems = async (currentPortfolioItemId: number, currentPortfolioSlug: string): Promise<any> => {
+    try {
+        // Fetch the specific portfolio with all related profile_items
+        const response = await api.get(
+            `/api/portfolios?filters[id][$eq]=${currentPortfolioItemId}&populate=profile_items,coverimage`
+        );
+
+        let portfolio = response.data.data[0];
+
+        // Filter out the profile_items that have the slug matching excludeSlug
+        portfolio.attributes.profile_items.data = portfolio.attributes.profile_items.data.filter(
+            (item: any) => item.attributes.slug !== currentPortfolioSlug
+        );
+        return portfolio;
+    } catch (error) {
+        console.error('Error fetching filtered portfolio:', error);
+        throw error;
+    }
 };
