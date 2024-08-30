@@ -19,6 +19,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { FaArrowRightLong } from "react-icons/fa6"
+import { sendEmail } from "@/actions/sendEmail"
 
 const formSchema = z.object({
     fullname: z.string().min(2, {
@@ -54,15 +55,32 @@ export function LeadForm() {
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        if (values.fullname === "") {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        // Convert form data to FormData object
+        // Convert form values to FormData object
+        const formData = new FormData();
+        formData.append("fullname", values.fullname);
+        formData.append("companyName", values.companyName);
+        formData.append("email", values.email);
+        formData.append("service", values.service);
+        formData.append("range", values.range);
+        formData.append("description", values.description);
+
+        const response = await sendEmail(formData);
+        if (response.error) {
             toast({
                 variant: "destructive",
-                title: "Full Name is Required",
-                description: "Please Enter Your Good Name",
-            })
+                title: "Error",
+                description: response.error,
+            });
+        } else {
+            toast({
+                variant: "default",
+                title: "Success",
+                description: "Your message has been sent!",
+            });
+            form.reset(); // Reset the form on success
         }
-        console.log(values)
     }
     const { toast } = useToast()
     return (

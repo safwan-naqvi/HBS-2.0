@@ -1,21 +1,19 @@
-import React from "react";
-import Footer from "@/components/layout/Footer";
-import { Metadata } from "next";
+import { RichTextContent } from "@/app/blogs/_components/RickTextContent";
 import {
     fetchPortfolioBySlug,
     fetchPortfolioBySlugMetaData,
     fetchRelatedPortfolioItems,
 } from "@/axios/api";
-import { truncateDescription } from "@/utils/utils";
-import WordPullUp from "@/components/magicui/word-pull-up";
-import { notFound } from "next/navigation";
-import { FaQuoteLeft } from "react-icons/fa";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Footer from "@/components/layout/Footer";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
+import WordPullUp from "@/components/magicui/word-pull-up";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getFirstLetter, truncateDescription } from "@/utils/utils";
+import { Metadata } from "next";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { FaExternalLinkSquareAlt, FaQuoteLeft } from "react-icons/fa";
 import RelatedProducts from "../_components/RelatedProducts";
-import Link from "next/link";
-import { FaExternalLinkSquareAlt } from "react-icons/fa";
-import { RichTextContent } from "@/app/blogs/_components/RickTextContent";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
     const portfolio = await fetchPortfolioBySlugMetaData(params.slug);
@@ -37,7 +35,6 @@ const page = async ({ params }: any) => {
         );
     }
 
-    // const blogsToDisplay = relatedBlogs?.data.length > 3 ? getRandomBlogs(relatedBlogs.data, 3) : relatedBlogs?.data;
     return (
         <div className="mt-[80px]">
             <div className="container w-full flex items-center justify-between gap-8 flex-wrap py-20 px-10 h-[60vh]">
@@ -53,39 +50,48 @@ const page = async ({ params }: any) => {
                 />
             </div>
             <div className="relative py-20 bg-black px-10 sm:px-16 md:px-20 lg:px-40 mt-40 min-h-[60vh]">
-                <img
+                <Image
                     src={portfolioData?.data[0].attributes.images.data[0].attributes.url}
                     alt="Image"
+                    height={1000}
+                    width={1000}
+                    priority
                     className="w-[85%] max-w-[1200px] object-cover aspect-video absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
                 />
                 <div className="py-10 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8 mt-[6rem] sm:mt-[10rem] md:mt-[16rem] lg:mt-[20rem] xl:mt-[28rem]">
-                    <div className="space-y-2">
-                        <h3 className="font-light uppercase text-white/80 text-sm md:text-md tracking-wide">
-                            Client
-                        </h3>
-                        <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
-                            {portfolioData?.data[0].attributes.clientName}
-                        </p>
-                    </div>
-                    <div className="space-y-2">
-                        <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
-                            Category
-                        </h3>
-                        <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
-                            {portfolioData?.data[0].attributes.category}
-                        </p>
-                    </div>
-                    <div className="space-y-2">
-                        <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
-                            Live View
-                        </h3>
-                        <a
-                            href={portfolioData?.data[0].attributes.url}
-                            className="text-lg md:text-xl flex items-center tracking-tight font-semibold text-white"
-                        >
-                            See Live <FaExternalLinkSquareAlt className="ml-2" />
-                        </a>
-                    </div>
+                    {!!portfolioData?.data[0].attributes.clientName &&
+                        <div className="space-y-2">
+                            <h3 className="font-light uppercase text-white/80 text-sm md:text-md tracking-wide">
+                                Client
+                            </h3>
+                            <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                                {portfolioData?.data[0].attributes.clientName}
+                            </p>
+                        </div>
+                    }
+                    {!!portfolioData?.data[0].attributes.category &&
+                        <div className="space-y-2">
+                            <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                                Category
+                            </h3>
+                            <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                                {portfolioData?.data[0].attributes.category}
+                            </p>
+                        </div>
+                    }
+                    {!!portfolioData?.data[0].attributes.url &&
+                        <div className="space-y-2">
+                            <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
+                                Live View
+                            </h3>
+                            <a
+                                href={portfolioData?.data[0].attributes.url}
+                                className="text-lg md:text-xl flex items-center tracking-tight font-semibold text-white"
+                            >
+                                See Live <FaExternalLinkSquareAlt className="ml-2" />
+                            </a>
+                        </div>
+                    }
                     {!!portfolioData?.data[0].attributes.timeline && (
                         <div className="space-y-2">
                             <h3 className="font-light text-sm md:text-md uppercase text-white/80 tracking-wide">
@@ -103,8 +109,8 @@ const page = async ({ params }: any) => {
                                 Services We Provided
                             </h3>
                             {portfolioData?.data[0].attributes.services.services.map(
-                                (service: any) => (
-                                    <p className="text-lg md:text-xl tracking-tight font-semibold text-white">
+                                (service: any, index: number) => (
+                                    <p key={index} className="text-lg md:text-xl tracking-tight font-semibold text-white">
                                         {service.title}
                                     </p>
                                 )
@@ -162,49 +168,56 @@ const page = async ({ params }: any) => {
                         </div>
                     )}
                     <div className="grid grid-cols-2 gap-10">
-                        {portfolioData?.data[0].attributes.gallery.data.map((item: any, index: number) => (
+                        {!!portfolioData?.data[0].attributes.gallery.data && portfolioData?.data[0].attributes.gallery.data.length > 0 && portfolioData?.data[0].attributes.gallery.data.map((item: any, index: number) => (
                             <div
                                 key={index}
                                 className={`overflow-hidden group ${index === 0 ? 'col-span-2' : 'col-span-1'}`}
                             >
-                                <img
+                                <Image
                                     src={item.attributes.url}
                                     alt={item.attributes.alternativeText || `Gallery Image ${index + 1}`}
+                                    height={600}
+                                    width={600}
+                                    quality={100}
                                     className="group-hover:scale-105 transition-all w-full"
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#671ac4] shadow-2xl">
-                    <div className="flex flex-col md:flex-row items-start justify-between gap-10">
-                        <FaQuoteLeft className="text-7xl text-white shrink-0" />
-                        <div className="space-y-10">
-                            <p className="text-2xl lg:text-3xl font-medium tracking-tight max-w-4xl leading-9 text-white">
-                                We were genuinely impressed by the exceptional 3D illustrations
-                                in the NFT marketplace. The illustrations brought a new level of
-                                depth and immersion to the platform, captivating our users.
-                            </p>
-                            <div className="flex gap-4 items-center text-white">
-                                <Avatar className="h-20 w-20">
-                                    <AvatarImage
-                                        src="https://github.com/shadcn.png"
-                                        alt="@shadcn"
-                                    />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
-                                <div className="flex-col justify-between">
-                                    <p className="text-xl font-bold tracking-tight">
-                                        Lorendan Stefan
-                                    </p>
-                                    <span className="tracking-tight font-light">
-                                        CEO and Founder, One Link
-                                    </span>
+                {
+                    portfolioData?.data[0].attributes.testimonial &&
+                    <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#671ac4] shadow-2xl">
+                        <div className="flex flex-col md:flex-row items-start justify-between gap-10">
+                            <FaQuoteLeft className="text-7xl text-white shrink-0" />
+                            <div className="space-y-10">
+                                <p className="text-2xl lg:text-3xl font-medium tracking-tight max-w-4xl leading-9 text-white">
+                                    {
+                                        !!portfolioData?.data[0].attributes.testimonial && portfolioData?.data[0].attributes.testimonial.testimonial
+                                    }
+                                </p>
+                                <div className="flex gap-4 items-center text-white">
+                                    <Avatar className="h-20 w-20">
+                                        <AvatarImage
+                                            src={portfolioData?.data[0].attributes.testimonial.avatar.data.attributes.url}
+                                            alt={portfolioData?.data[0].attributes.testimonial.avatar.data.attributes.alternativeText}
+                                        />
+                                        <AvatarFallback>{getFirstLetter(portfolioData?.data[0].attributes.testimonial.avatar.data.attributes.alternativeText)}</AvatarFallback>
+                                    </Avatar>
+                                    <div className="flex-col justify-between">
+                                        <p className="text-xl font-bold tracking-tight">
+                                            {portfolioData?.data[0].attributes.testimonial.client}
+                                        </p>
+                                        <span className="tracking-tight font-light">
+                                            {portfolioData?.data[0].attributes.testimonial.designation}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                }
+
             </div>
             <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
                 <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">
@@ -219,7 +232,9 @@ const page = async ({ params }: any) => {
                     <LeadForm />
                 </div>
             </div>
-            <RelatedProducts />
+            {
+                !!relatedBlogs && <RelatedProducts project={relatedBlogs} />
+            }
             <Footer />
         </div>
     );

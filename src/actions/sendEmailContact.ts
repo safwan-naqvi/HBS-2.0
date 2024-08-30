@@ -8,13 +8,12 @@ import { EmailTemplate } from "@/components/common/email-template/email-template
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendEmail = async (formData: FormData) => {
-  const senderEmail = formData.get("email") as string;
-  const fullname = formData.get("fullname") as string;
-  const companyName = formData.get("companyName") as string;
-  const service = formData.get("service") as string;
-  const range = formData.get("range") as string;
-  const description = formData.get("description") as string;
+export const sendEmailContact = async (formData: FormData) => {
+  const senderEmail = formData.get("senderEmail") as string;
+  const fullname = formData.get("name") as string;
+  const companyName = formData.get("organization") as string;
+  const service = formData.get("services") as string;
+  const description = formData.get("message") as string;
 
   // simple server-side validation
   if (!validateString(senderEmail, 500)) {
@@ -31,12 +30,12 @@ export const sendEmail = async (formData: FormData) => {
   let data;
   try {
     data = await resend.emails.send({
-      from: "HashBitStudio | Leads <leads@hashbitstudio.com>",
+      from: "HashBitStudio | Contact Us <leads@hashbitstudio.com>",
       to: ["safwan.naqvi@gmail.com"],
-      cc: ["leads@hashbitstudio.com"],
-      subject: "New Lead Generated From HashBitStudio Contact",
+      cc: ["leads@hashbitstudio.com", "contact@hashbitstudio.com"],
+      subject: "New Lead Generated From HashBitStudio Contact Us",
       replyTo: senderEmail as string,
-      react: EmailTemplate({ fullname, companyName, senderEmail, service, range, description }),
+      react: EmailTemplate({ fullname, companyName, senderEmail, service, description }),
     });
   } catch (error: unknown) {
     return {

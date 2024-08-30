@@ -2,12 +2,12 @@
 import clsx from "clsx";
 import { DM_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-import FormData from "./_components/FormData";
 
 
-import Header from "@/components/layout/Header";
-import styles from "./styles.module.scss";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import ContactForm from "./_components/FormData";
+import styles from "./styles.module.scss";
 
 const dm_sans = DM_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -50,7 +50,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="flex flex-col lg:flex-row gap-5 flex-wrap relative will-change-transform">
-            <FormData />
+            <ContactForm />
             <div
               className={clsx(
                 "block w-full lg:w-[27%] pr-[3vw] text-white py-10",

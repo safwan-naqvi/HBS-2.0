@@ -34,3 +34,10 @@ export const shuffleArray = (array: any[]) => {
     }
     return array;
 };
+
+export const getFirstLetter = (name: string): string => {
+    if (!name || typeof name !== 'string') {
+        return '';
+    }
+    return name.trim().charAt(0).toUpperCase();
+};

@@ -47,7 +47,7 @@ export default function SkewGallery() {
 
           }
           {!webProfilesLoading && webProfilesData.data.length > 0 && webProfilesData.data.map((portfolio: any, index: number) => (
-            <div className="flex flex-col">
+            <div className="flex flex-col" key={index}>
               <motion.div
                 key={portfolio.id}
                 className={styles.gridItem}

@@ -74,7 +74,7 @@ export const fetchPortfolioBySlugMetaData = async (slug: string): Promise<any> =
 
 export const fetchPortfolioBySlug = async (slug: string): Promise<any> => {
     const { data: blog } = await api.get<any>(
-        `https://cms.hashbitstudio.com/api/profile-items?filters[slug][$eq]=${slug}&populate[images][fields][0]=url&populate[portfolio][fields][0]=title&populate[coverimage][fields][0]=url&populate[gallery][fields][0]=alternativeText&populate[gallery][fields][1]=url`
+        `/api/profile-items?filters[slug][$eq]=${slug}&populate[images][fields][0]=url&populate[portfolio][fields][0]=title&populate[coverimage][fields][0]=url&populate[gallery][fields][0]=alternativeText&populate[gallery][fields][1]=url&populate[testimonial][populate][avatar][fields][0]=url&populate[testimonial][populate][avatar][fields][1]=alternativeText`
     );
     return blog;
 };
@@ -83,17 +83,10 @@ export const fetchPortfolioBySlug = async (slug: string): Promise<any> => {
 export const fetchRelatedPortfolioItems = async (currentPortfolioItemId: number, currentPortfolioSlug: string): Promise<any> => {
     try {
         // Fetch the specific portfolio with all related profile_items
-        const response = await api.get(
-            `/api/portfolios?filters[id][$eq]=${currentPortfolioItemId}&populate=profile_items,coverimage`
+        const { data } = await api.get(
+            `/api/portfolios?filters[id]=${currentPortfolioItemId}&populate[profile_items][filters][slug][$ne]=${currentPortfolioSlug}&populate[profile_items][populate][images][fields]=url`
         );
-
-        let portfolio = response.data.data[0];
-
-        // Filter out the profile_items that have the slug matching excludeSlug
-        portfolio.attributes.profile_items.data = portfolio.attributes.profile_items.data.filter(
-            (item: any) => item.attributes.slug !== currentPortfolioSlug
-        );
-        return portfolio;
+        return data
     } catch (error) {
         console.error('Error fetching filtered portfolio:', error);
         throw error;

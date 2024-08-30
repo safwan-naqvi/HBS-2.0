@@ -1,24 +1,24 @@
-"use client";
-
 import React, { useLayoutEffect } from "react";
 import { useEffect, useRef } from "react";
 import styles from "./style.module.scss";
 import gsap from "gsap";
 
-export default function RoundedButton({
+export default function SubmitButton({
   children,
   backgroundColor = "#455CE9",
+  onClick,  // Ensure onClick is passed here
   ...attributes
 }: {
   children: React.ReactNode;
   backgroundColor?: string;
-  className?: any;
-  onClick?: React.MouseEventHandler<HTMLElement>;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLElement>;  // Type definition for onClick
 }) {
   const circle = useRef(null);
   const magnetic = useRef<HTMLButtonElement>(null);
   let timeline = useRef<any>(null);
   let timeoutId: any = null;
+
   useEffect(() => {
     timeline.current = gsap.timeline({ paused: true });
     timeline.current
@@ -69,17 +69,14 @@ export default function RoundedButton({
       timeline.current.play();
     }, 300);
   };
+
   return (
     <button
       ref={magnetic}
       className={styles.roundedButton}
       style={{ overflow: "hidden" }}
-      onMouseEnter={() => {
-        manageMouseEnter();
-      }}
-      onMouseLeave={() => {
-        manageMouseLeave();
-      }}
+      onMouseEnter={manageMouseEnter}
+      onMouseLeave={manageMouseLeave}
       {...attributes}
       type="submit"
     >
