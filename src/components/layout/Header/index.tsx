@@ -10,9 +10,11 @@ import Nav from "./Nav";
 import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
 import useDetectScroll from '@smakss/react-scroll-direction'
+import NavHeader from "../NavHeader";
 export default function Header() {
   const header = useRef(null);
   const [isActive, setIsActive] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   /*---- Media Queries ----*/
@@ -37,30 +39,53 @@ export default function Header() {
     },
   };
 
+
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY
+        > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   /*---- --------- ----*/
 
   useEffect(() => {
     if (isActive) setIsActive(false);
   }, [pathname]);
-
   return (
     <>
-      <div ref={header} className={clsx(styles.header)} >
+      <header ref={header} className={clsx(styles.header, scrollDir === "down" ? "-translate-y-full" : "translate-y-0", isScrolled ? "bg-neutral-900 shadow-lg" : "bg-transparent")}>
         <Link href={"/"} className="cursor-pointer">
           <Image src={"/assets/Logo.svg"} alt="Logo" height={0} width={0} style={{ width: "60px", height: "60px" }} />
         </Link>
-        <div className={styles.headerNav}>
-          <motion.div
-            className={styles.menu}
-            variants={variants}
-            animate={isActive ? "open" : "closed"}
-            initial="closed"
-          >
-            <AnimatePresence>{isActive && <Nav />}</AnimatePresence>
-          </motion.div>
-          <NavButton isActive={isActive} setIsActive={setIsActive} />
-        </div>
-      </div>
+        {
+          !isSmallDevice ?
+            <NavHeader /> :
+            <div className={styles.headerNav}>
+              <motion.div
+                className={styles.menu}
+                variants={variants}
+                animate={isActive ? "open" : "closed"}
+                initial="closed"
+              >
+                <AnimatePresence>{isActive && <Nav />}</AnimatePresence>
+              </motion.div>
+              <NavButton isActive={isActive} setIsActive={setIsActive} />
+            </div>
+        }
+
+      </header >
     </>
   );
 }

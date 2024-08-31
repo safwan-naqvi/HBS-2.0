@@ -1,14 +1,15 @@
 "use client";
 
 import HorizontalScroll from "@/components/common/HorizontalScroll";
+import Footer from "@/components/layout/Footer";
+import HeroContainer from "@/components/layout/HeroContainer/HeroContainer";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
 import SocialMedia from "@/components/utils/SocialMedia";
 import AboutCompany from "./_components/AboutCompany";
-import HeroContainer from "./_components/HeroContainer";
 import OurSuccess from "./_components/OurSuccess";
 import OurTeams from "./_components/OurTeam";
 import WhatDifference from "./_components/WhatDifference";
-import Footer from "@/components/layout/Footer";
+import { cards } from "@/lib/data";
 
 export default function About() {
 
@@ -16,9 +17,9 @@ export default function About() {
     <>
       <div className={"flex flex-col min-h-screen bg-bgPrimary text-textPrimary fade-in"}>
         <SocialMedia />
-        <HeroContainer />
+        <HeroContainer textOne='About' textTwo='HashBitStudio' description='Unleashing software engineering expertise for scalable business solutions, from startups to enterprises. Simultaneously, we elevate businesses through high-end experience design, fostering exponential growth.' />
         <AboutCompany />
-        <HorizontalScroll />
+        <HorizontalScroll classNames="bg-neutral-900" imageShow={true} />
         <OurTeams />
         <OurSuccess />
         <WhatDifference />

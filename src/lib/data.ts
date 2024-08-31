@@ -2,7 +2,7 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import { CardType } from "@/lib/types";
+import { CardType, MinimalCardType, whyChooseOurServices } from "@/lib/types";
 
 export const links = [
   {
@@ -334,6 +334,73 @@ export const cards: CardType[] = [
   },
 ];
 
+export const cardsIndustries: MinimalCardType[] = [
+  {
+    id: 1,
+    title: "Corporate",
+    description: "Got a business stuff to manage? We have built dozens of corporate apps for hospitals, hotels, fashion, manufacturing, and other industries."
+  },
+  {
+    id: 2,
+    title: "Education",
+    description: "The future of education is digital! We develop engaging MVPs for e-learning platforms, Learning Management Systems, student portals, and mobile learning apps."
+  },
+  {
+    id: 3,
+    title: "E-Commerce",
+    description: "Stand out in the competitive retail world! Grow your retail game with user-friendly apps, efficient CRMs, robust inventory management, and intuitive accounting solutions."
+  },
+  {
+    id: 4,
+    title: "Enterprise",
+    description: "Cut through the red tape and watch your "
+  },
+  {
+    id: 5,
+    title: "Fintech",
+    description: "The financial world is changing, and we are here to help you lead the charge. We develop cutting-edge MVPs for both fintech startups and established players."
+  },
+  {
+    id: 6,
+    title: "Healthcare",
+    description: "Transform patient care with user-centric MVPs. From EHR to virtual consultations, we create solutions to empower patients, and optimize healthcare delivery."
+  }
+];
+
+
+
+export const whyChooseOurServicesData: whyChooseOurServices[] = [
+  {
+    "number": 1,
+    "title": "User-Centered Approach",
+    "description": "We prioritize your users above all else, diving deep into their needs to create designs that connect, engage, and deliver lasting impact."
+  },
+  {
+    "number": 2,
+    "title": "Expert Design Team",
+    "description": "Our team of seasoned designers brings a wealth of experience, ensuring each project is approached with a comprehensive strategy for exceptional outcomes."
+  },
+  {
+    "number": 3,
+    "title": "Innovative Strategy",
+    "description": "We don't just keep up with trends—we set them. Our designs are fueled by strategic insights, crafting experiences that stand out and resonate."
+  },
+  {
+    "number": 4,
+    "title": "Data-Driven Design",
+    "description": "Creativity meets data in our process. We leverage user insights to refine designs that are not only visually compelling but also highly effective."
+  },
+  {
+    "number": 5,
+    "title": "Transparent Collaboration",
+    "description": "We maintain open, clear communication throughout the process, ensuring you’re involved and confident in every stage of the design journey."
+  },
+  {
+    "number": 6,
+    "title": "Agile Flexibility",
+    "description": "Our adaptive approach allows us to respond quickly to changes, ensuring your designs stay relevant and attuned to evolving user needs."
+  }
+]
 
 export const Socials = [
   {

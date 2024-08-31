@@ -95,6 +95,14 @@ const config = {
             transform: "translate(-50%, -50%) scale(0.9)",
           },
         },
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -106,6 +114,7 @@ const config = {
         'spin-slow': 'spin 10s linear infinite',
         'spin-slow-reverse': 'spin 15s reverse infinite',
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+        aurora: "aurora 60s linear infinite",
       },
 
     },

@@ -5,8 +5,8 @@ import SocialMedia from '@/components/utils/SocialMedia';
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { GoArrowUpRight } from 'react-icons/go';
-import HeroContainer from './_components/HeroContainer';
 import SkewGallery from "./_components/Main/_components/SkewGallery";
+import HeroContainer from "@/components/layout/HeroContainer/HeroContainer";
 
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function Portfolio() {
             <Suspense fallback={<Loading />}>
                 <div className={"flex flex-col bg-background fade-in"}>
                     <SocialMedia />
-                    <HeroContainer />
+                    <HeroContainer textOne='Our Services' textTwo='Portfolio' description='Unleashing software engineering expertise for scalable business solutions, from startups to enterprises. Simultaneously, we elevate businesses through high-end experience design, fostering exponential growth.' />
                     {/* <ServiceGallery /> */}
                     <div className='py-10'>
                         <div className="container">

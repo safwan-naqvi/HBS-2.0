@@ -1,9 +1,17 @@
 "use client";
-import { cards } from "@/lib/data";
-import { motion, useTransform, useScroll } from "framer-motion";
+import { cards, cardsIndustries } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Card from "./Cards";
-export default function HorizontalScroll() {
+import MinimalCard from "./MinimalCard/minimal-card";
+
+interface HorizontalScrollProps {
+  classNames?: string;
+  imageShow?: boolean;
+}
+
+export default function HorizontalScroll({ classNames, imageShow = false }: HorizontalScrollProps) {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -12,11 +20,13 @@ export default function HorizontalScroll() {
 
   return (
     <>
-      <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-4">
-            {cards.map((card) => {
+      <section ref={targetRef} className={cn("relative h-[300vh]", classNames)}>
+        <div className="sticky top-20 flex items-center overflow-hidden">
+          <motion.div style={{ x }} className="flex">
+            {imageShow ? cards.map((card) => {
               return <Card card={card} key={card.id} />;
+            }) : cardsIndustries.map((card) => {
+              return <MinimalCard card={card} key={card.id} />;
             })}
           </motion.div>
         </div>
