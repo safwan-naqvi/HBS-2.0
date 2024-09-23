@@ -31,7 +31,7 @@ export default function SkewGallery() {
     queryFn: () => fetchPortfolios('web-design-and-development'),
     staleTime: 1000 * 60 * 5,  // 5 minutes
   });
-  console.log(webProfilesData)
+
   return (
     <>
       <section
@@ -40,7 +40,7 @@ export default function SkewGallery() {
         data-scroll-container
         ref={ref}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-12 place-items-center mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-12 h-full mx-auto">
           {
 
             webProfilesLoading ? <div className="text-white">Loading</div> : ""
@@ -57,25 +57,25 @@ export default function SkewGallery() {
                 viewport={{
                   once: true,
                 }}
-                style={{ overflow: "hidden" }}
+                style={{ overflow: "hidden", height: "100%" }}
                 custom={index}
               >
                 <motion.a href={`portfolio/${portfolio.attributes.slug}`} className={styles.caseStudy}>
                   <motion.img
                     className={styles.gridItemMedia}
                     src={portfolio.attributes.images.data[0].attributes.url}
-                    style={{ objectFit: "cover" }}
+                    style={{ objectFit: "cover", height: "100%" }}
                   />
                 </motion.a>
               </motion.div>
-              <div className="text-white -mt-6">
+              <div className="text-white mt-2">
                 <h3 className="text-2xl tracking-tighter font-semibold">{portfolio.attributes.title}</h3>
-                <p className="text-white/70 font-light tracking-tight">{portfolio.attributes.type}</p>
+                <p className="text-white/70 font-light tracking-tight">{portfolio.attributes.category}</p>
               </div>
             </div>
           ))}
         </div>
-      </section>
+      </section >
     </>
   );
 }

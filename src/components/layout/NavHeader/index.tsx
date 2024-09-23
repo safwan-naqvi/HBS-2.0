@@ -111,10 +111,10 @@ export default function NavHeader({ lightMode }: { lightMode?: boolean }) {
           </Magnetic>
         </div>
         <div className="flex items-center gap-3">
-          <a href={"https://facebook.com/hashbitstudio"} target="_blank">
+          <a href={"https://facebook.com/hashbitstudio.agency"} target="_blank">
             <FaFacebook className="h-6 w-6 text-neutral-50 hover:text-neutral-200 transition-all" />
           </a>
-          <a href={"https://instagram.com/hashbitstudio.official"} target="_blank">
+          <a href={"https://instagram.com/hashbitstudio.agency"} target="_blank">
             <FaInstagram className="h-6 w-6 text-neutral-50 hover:text-neutral-200 transition-all" />
           </a>
           <a href={"https://linkedin.com/hashbitstudio"} target="_blank">

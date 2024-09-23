@@ -59,7 +59,7 @@ export const fetchRelatedBlogs = async (id: number, slug: string): Promise<any> 
 
 export const fetchPortfolios = async (slug: string): Promise<any> => {
     const { data: portfolios } = await api.get<any>(
-        `/api/profile-items?sort[0]=publishedAt:desc&filters[portfolio][slug][$eq]=${slug}&populate[images][fields][0]=url&fields[0]=title&fields[1]=slug`
+        `/api/profile-items?sort[0]=publishedAt:desc&filters[portfolio][slug][$eq]=${slug}&populate[images][fields][0]=url&fields[0]=title&fields[1]=slug&fields[2]=category`
     );
     return portfolios;
 };
@@ -84,7 +84,7 @@ export const fetchRelatedPortfolioItems = async (currentPortfolioItemId: number,
     try {
         // Fetch the specific portfolio with all related profile_items
         const { data } = await api.get(
-            `/api/portfolios?filters[id]=${currentPortfolioItemId}&populate[profile_items][filters][slug][$ne]=${currentPortfolioSlug}&populate[profile_items][populate][images][fields]=url`
+            `/api/portfolios?filters[id]=${currentPortfolioItemId}&populate[profile_items][filters][slug][$ne]=${currentPortfolioSlug}&populate[profile_items][populate][images][fields]=url&populate[profile_items][populate][coverImage][fields]=url`
         );
         return data
     } catch (error) {

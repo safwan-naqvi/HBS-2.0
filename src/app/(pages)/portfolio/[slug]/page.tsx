@@ -45,7 +45,7 @@ const page = async ({ params }: any) => {
                     </h3>
                 </div>
                 <WordPullUp
-                    className="text-5xl text-[#8542cc] font-bold max-w-5xl tracking-tighten md:text-6xl md:leading-[5rem]"
+                    className="text-5xl text-[#ffffff] font-bold max-w-5xl tracking-tighten md:text-6xl md:leading-[5rem]"
                     words={portfolioData?.data[0].attributes.title}
                 />
             </div>
@@ -53,10 +53,10 @@ const page = async ({ params }: any) => {
                 <Image
                     src={portfolioData?.data[0].attributes.images.data[0].attributes.url}
                     alt="Image"
-                    height={1000}
-                    width={1000}
-                    priority
-                    className="w-[85%] max-w-[1200px] object-cover aspect-video absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
+                    height={1600}
+                    width={1600}
+                    quality={100}
+                    className="w-full h-full max-w-[1200px] max-h-screen object-cover absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
                 />
                 <div className="py-10 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8 mt-[6rem] sm:mt-[10rem] md:mt-[16rem] lg:mt-[20rem] xl:mt-[28rem]">
                     {!!portfolioData?.data[0].attributes.clientName &&
@@ -130,12 +130,14 @@ const page = async ({ params }: any) => {
                     />
                 </div>
             </div>
-            <div className="w-full bg-white pb-20">
-                <img
-                    src="https://cdn.prod.website-files.com/643f7373d3f6653157617339/65027eea4b5b652c8d85aa24_one-link-nft-ui-ux-case-study-2-p-2000.webp"
-                    alt="Cover"
-                    className="w-full h-full object-cover"
-                />
+            <div className="h-full w-full bg-white pb-20">
+                <div className="group max-h-[500px] overflow-hidden w-full">
+                    <img
+                        src={portfolioData?.data[0].attributes.coverimage.data.attributes.url}
+                        alt="Cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
+                    />
+                </div>
                 <div className="bg-white text-black py-40 px-10 md:px-20 lg:px-40 space-y-8">
                     {!!portfolioData?.data[0].attributes.problems && (
                         <div className="grid grid-cols-1 md:grid-cols-6 gap-6 pb-6">
@@ -171,23 +173,21 @@ const page = async ({ params }: any) => {
                         {!!portfolioData?.data[0].attributes.gallery.data && portfolioData?.data[0].attributes.gallery.data.length > 0 && portfolioData?.data[0].attributes.gallery.data.map((item: any, index: number) => (
                             <div
                                 key={index}
-                                className={`overflow-hidden group ${index === 0 ? 'col-span-2' : 'col-span-1'}`}
+                                className={`group overflow-hidden max-h-screen w-fullgroup ${index === 0 || index === 3 ? 'col-span-2' : 'col-span-2 md:col-span-1'}`}
                             >
-                                <Image
+                                <img
                                     src={item.attributes.url}
                                     alt={item.attributes.alternativeText || `Gallery Image ${index + 1}`}
-                                    height={600}
-                                    width={600}
-                                    quality={100}
-                                    className="group-hover:scale-105 transition-all w-full"
+                                    className="group-hover:scale-105 h-full w-full transition-all object-cover"
                                 />
                             </div>
                         ))}
                     </div>
                 </div>
                 {
+                    // bg-[#671ac4]
                     portfolioData?.data[0].attributes.testimonial &&
-                    <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#671ac4] shadow-2xl">
+                    <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#202020] shadow-2xl">
                         <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                             <FaQuoteLeft className="text-7xl text-white shrink-0" />
                             <div className="space-y-10">
