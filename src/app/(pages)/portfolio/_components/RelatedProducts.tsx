@@ -27,7 +27,7 @@ const RelatedProjects = ({ project }: any) => {
                 <CarouselContent>
                     {
                         project.data[0].attributes.profile_items.data.map((item: any) => {
-                            return <Link href={`/portfolio/${item.attributes.slug}`} className='w-full'><CarouselItem className='relative md:basis-1/2 lg:basis-1/2 w-[300px] shrink-0' key={item.id}>
+                            return <Link href={`/portfolio/${item.attributes.slug}`} className='w-full' key={item.id}><CarouselItem className='relative md:basis-1/2 lg:basis-1/2 w-[300px] shrink-0' key={item.id}>
 
                                 <motion.div
                                     className={cn(`max-w-[400px] group overflow-hidden mx-auto`)}
