@@ -24,7 +24,7 @@ export default function Portfolio() {
                     {/* <ServiceGallery /> */}
                     <div className='py-10'>
                         <div className="container">
-                            <h2 className="text-4xl text-white font-semibold">Portfolio</h2>
+                            <h2 className="text-4xl text-white font-semibold my-4">Portfolio</h2>
                             <div className='flex text-white items-center justify-between gap-2 border-b border-neutral-300 mb-12 sm:mb-14 pb-4'>
                                 <div className="flex items-center">
                                     <div className="flex h-8 w-8 relative items-center justify-center"><span className="animate-ping absolute h-8 w-8 rounded-full bg-[#be3278] opacity-75"></span><span className="relative rounded-full h-8 w-8 bg-[#94014b]"></span></div>

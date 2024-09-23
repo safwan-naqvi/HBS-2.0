@@ -37,7 +37,7 @@ const page = async ({ params }: any) => {
 
     return (
         <div className="mt-[80px]">
-            <div className="container w-full flex items-center justify-between gap-8 flex-wrap py-20 px-10 h-[60vh]">
+            <div className="container w-full flex items-center justify-between gap-8 flex-wrap py-20 px-10 h-fit lg:h-[60vh]">
                 <div className="text-white space-y-1">
                     <p className="tracking-wide font-thin text-2xl uppercase">Project</p>
                     <h3 className="text-xl font-semibold tracking-tight">
@@ -56,7 +56,7 @@ const page = async ({ params }: any) => {
                     height={1600}
                     width={1600}
                     quality={100}
-                    className="w-full h-full max-w-[1200px] max-h-screen object-cover absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
+                    className="w-full max-w-[80vw] max-h-[400px] md:max-h-[500px] lg:max-h-[700px] object-contain absolute left-1/2 -translate-x-1/2 -top-1/4 lg:-top-1/3"
                 />
                 <div className="py-10 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8 mt-[6rem] sm:mt-[10rem] md:mt-[16rem] lg:mt-[20rem] xl:mt-[28rem]">
                     {!!portfolioData?.data[0].attributes.clientName &&
@@ -130,7 +130,7 @@ const page = async ({ params }: any) => {
                     />
                 </div>
             </div>
-            <div className="h-full w-full bg-white pb-20">
+            <div className="h-full w-full pb-20">
                 <div className="group max-h-[500px] overflow-hidden w-full">
                     <img
                         src={portfolioData?.data[0].attributes.coverimage.data.attributes.url}
@@ -187,11 +187,11 @@ const page = async ({ params }: any) => {
                 {
                     // bg-[#671ac4]
                     portfolioData?.data[0].attributes.testimonial &&
-                    <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#202020] shadow-2xl">
+                    <div className="w-full max-w-6xl h-full mx-auto p-16 bg-[#202020] my-auto shadow-2xl">
                         <div className="flex flex-col md:flex-row items-start justify-between gap-10">
                             <FaQuoteLeft className="text-7xl text-white shrink-0" />
                             <div className="space-y-10">
-                                <p className="text-2xl lg:text-3xl font-medium tracking-tight max-w-4xl leading-9 text-white">
+                                <p className="text-md md:text-2xl lg:text-3xl font-light md:font-medium tracking-tight max-w-4xl leading-0 md:leading-9 text-white">
                                     {
                                         !!portfolioData?.data[0].attributes.testimonial && portfolioData?.data[0].attributes.testimonial.testimonial
                                     }
@@ -205,7 +205,7 @@ const page = async ({ params }: any) => {
                                         <AvatarFallback>{getFirstLetter(portfolioData?.data[0].attributes.testimonial.avatar.data.attributes.alternativeText)}</AvatarFallback>
                                     </Avatar>
                                     <div className="flex-col justify-between">
-                                        <p className="text-xl font-bold tracking-tight">
+                                        <p className="text-sm md:text-xl font-bold tracking-tight">
                                             {portfolioData?.data[0].attributes.testimonial.client}
                                         </p>
                                         <span className="tracking-tight font-light">

@@ -35,19 +35,19 @@ export default function SkewGallery() {
   return (
     <>
       <section
-        className="h-full max-w-screen-lg mx-auto pt-[10vh] pb-[30vh]"
+        className="h-full max-w-screen-lg mx-auto pb-[30vh]"
         id="main-container"
         data-scroll-container
         ref={ref}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-12 h-full mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12 h-full mx-auto">
           {
 
             webProfilesLoading ? <div className="text-white">Loading</div> : ""
 
           }
           {!webProfilesLoading && webProfilesData.data.length > 0 && webProfilesData.data.map((portfolio: any, index: number) => (
-            <div className="flex flex-col" key={index}>
+            <div className="flex flex-row gap-2 lg:flex-col !relative max-h-[400px] w-full mt-20" key={index}>
               <motion.div
                 key={portfolio.id}
                 className={styles.gridItem}
@@ -57,19 +57,19 @@ export default function SkewGallery() {
                 viewport={{
                   once: true,
                 }}
-                style={{ overflow: "hidden", height: "100%" }}
+                style={{ overflow: "hidden", height: "100%", flexShrink: "0" }}
                 custom={index}
               >
                 <motion.a href={`portfolio/${portfolio.attributes.slug}`} className={styles.caseStudy}>
                   <motion.img
                     className={styles.gridItemMedia}
                     src={portfolio.attributes.images.data[0].attributes.url}
-                    style={{ objectFit: "cover", height: "100%" }}
+                    style={{ objectFit: "cover", height: "100%", maxHeight: "400px" }}
                   />
                 </motion.a>
               </motion.div>
-              <div className="text-white mt-2">
-                <h3 className="text-2xl tracking-tighter font-semibold">{portfolio.attributes.title}</h3>
+              <div className="text-white mt-2 w-full">
+                <h3 className="text-xl md:text-2xl tracking-tighter font-semibold">{portfolio.attributes.title}</h3>
                 <p className="text-white/70 font-light tracking-tight">{portfolio.attributes.category}</p>
               </div>
             </div>
