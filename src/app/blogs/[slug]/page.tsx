@@ -13,10 +13,31 @@ import Footer from '@/components/layout/Footer';
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
     const blog = await fetchBlogBySlugMetaData(params.slug);
+    const { Title, excerpt } = blog; //const { Title, excerpt, featuredImage } = blog;
     return {
-        title: blog.Title,
-        description: blog.excerpt,
-    }
+        title: Title,
+        description: excerpt || 'Read this blog post at HashBitStudio.',
+        openGraph: {
+            title: Title,
+            description: excerpt,
+            url: `https://www.hashbitstudio.com/blog/${params.slug}`,
+            images: [
+                {
+                    url: '/opengraph-image.png', // Fallback image if no featuredImage
+                    width: 1200,
+                    height: 630,
+                    alt: Title,
+                },
+            ],
+            siteName: 'HashBitStudio',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: Title,
+            description: excerpt,
+            images: ['/opengraph-image.png'], // Twitter image, with fallback
+        },
+    };
 }
 
 const page = async ({ params }: any) => {
