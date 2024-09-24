@@ -1,13 +1,12 @@
-import React, { FormEvent, useRef } from "react";
-import FormInput from "./FormInput";
-import styles from "./style.module.scss";
-import { sendEmail } from "@/actions/sendEmail";
-import SubmitButton from "./SubmitButton";
+"use client"
+import { sendEmailContact } from "@/actions/sendEmailContact";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { sendEmailContact } from "@/actions/sendEmailContact";
+import styles from "./style.module.scss";
+import SubmitButton from "./SubmitButton";
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
   // Zod schema definition

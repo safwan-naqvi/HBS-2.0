@@ -22,7 +22,7 @@ export function Hero() {
                 </div> */}
                 <div className={styles.content}>
                     <h1 className="text-5xl -mt-16 md:mt-6 md:text-7xl font-[600] w-[650px] text-center leading-[3.5rem] md:leading-[4.5rem] tracking-tighter pointer-events-none">
-                        <span className="block">Unlock</span>
+                        <span className="block">Unlocking</span>
                         <span className="block">Digital</span>
                         <span className="block">Solutions</span>
                         <span className="block">With</span>

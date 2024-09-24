@@ -4,11 +4,17 @@ import HeroContainer from '@/components/layout/HeroContainer/HeroContainer'
 import { LeadForm } from '@/components/layout/LeadForm/LeadForm';
 import { AuroraBackground } from '@/components/ui/aurora-bg';
 import { cardsIndustries, whyChooseOurServicesData } from '@/lib/data';
+import { Metadata } from 'next';
 import React from 'react'
 import { FaArrowRight } from "react-icons/fa";
+export const metadata: Metadata = {
+    title: "Our Services",
+    description: "Explore HashBitStudio's comprehensive digital services, from design to development and deployment, tailored to help your business thrive online.",
+};
+
 const OurServices = () => {
     return (
-        <div className='w-full fade-in'>
+        <div className='w-full fade-in' data-lenis-prevent>
             <HeroContainer textOne='Services' textTwo='We Offer' description='Unleashing software engineering expertise for scalable business solutions, from startups to enterprises. Simultaneously, we elevate businesses through high-end experience design, fostering exponential growth.' />
             <div className='bg-white text-[#111] px-10 md:px-20 lg:px-40'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-12 pt-40 pb-10'>

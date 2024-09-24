@@ -1,27 +1,22 @@
 "use client";
 
-import HomeLoader from "@/components/layout/Preloader";
-import SocialMedia from "@/components/utils/SocialMedia";
-import { useEffect, useState } from "react";
-import { Hero } from "./_components/Hero/Hero";
-import Introduction from "./_components/Intro/Introduction";
-import { Clients } from "@/components/common/ClientsLogo/Clients";
-import About from "./_components/About";
-import TechStack from "./_components/Technologies/Tech";
-import TechSection from "./_components/Technologies";
-import Showcase from "./_components/Showcase";
-import Footer from "@/components/layout/Footer";
-import LetsConnect from "./_components/LetConnect/LetsConnect";
-import ServiceSection from "./_components/ServiceSection/ServiceSection";
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
-import Link from "next/link";
 import { Testimonials } from "@/components/common/Testimonials/testimonials";
 import { Faqs } from "@/components/layout/Faqs/Faqs";
-import { HomepageFaqs } from "@/lib/constantData";
+import Footer from "@/components/layout/Footer";
 import { LeadForm } from "@/components/layout/LeadForm/LeadForm";
-import Head from "next/head";
+import HomeLoader from "@/components/layout/Preloader";
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+import SocialMedia from "@/components/utils/SocialMedia";
+import { HomepageFaqs } from "@/lib/constantData";
 import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+import About from "./_components/About";
+import { Hero } from "./_components/Hero/Hero";
+import Introduction from "./_components/Intro/Introduction";
+import Showcase from "./_components/Showcase";
+import TechSection from "./_components/Technologies";
 
 
 export default function Home() {

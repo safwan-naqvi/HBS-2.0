@@ -21,7 +21,7 @@ export default function HorizontalScroll({ classNames, imageShow = false }: Hori
   return (
     <>
       <section ref={targetRef} className={cn("relative h-[300vh]", classNames)}>
-        <div className="sticky top-20 flex items-center overflow-hidden">
+        <div className="sticky top-1/3 flex items-center overflow-hidden">
           <motion.div style={{ x }} className="flex">
             {imageShow ? cards.map((card) => {
               return <Card card={card} key={card.id} />;

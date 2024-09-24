@@ -12,7 +12,6 @@ import Link from 'next/link';
 const RelatedProjects = ({ project }: any) => {
     const [isHovered, setIsHovered] = useState(false);
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-    console.log(project.data[0].attributes)
     return (
         <div
             className={cn(`w-full py-20 bg-[#d3d3d3] relative`)}

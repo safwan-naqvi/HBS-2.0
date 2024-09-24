@@ -1,25 +1,20 @@
-"use client";
 import clsx from "clsx";
-import { DM_Sans } from "next/font/google";
+
 import { Toaster } from "react-hot-toast";
 
-
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import ContactForm from "./_components/FormData";
 import styles from "./styles.module.scss";
+import { Metadata } from "next";
 
-const dm_sans = DM_Sans({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-});
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with HashBitStudio for expert design, development, and deployment services. We're here to help you dominate the digital world.",
+};
 
 export default function Contact() {
-
-
   return (
     <>
-      <Header />
       <Toaster position="top-right" />
       <div className="min-h-screen py-[12rem] bg-[#0e0e0e] text-gray-50 fade-in">
         <div className="container mx-auto px-[6vw] lg:px-[10vw]">
@@ -53,8 +48,7 @@ export default function Contact() {
             <ContactForm />
             <div
               className={clsx(
-                "block w-full lg:w-[27%] pr-[3vw] text-white py-10",
-                dm_sans.className
+                "block w-full lg:w-[27%] pr-[3vw] text-white py-10"
               )}
             >
               <h5 className="uppercase text-[12px] tracking-tight text-gray-300 pb-5">
@@ -68,7 +62,9 @@ export default function Contact() {
                 </li>
 
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <a className={styles.el} href="tel:+923345606564"><PerspectiveText label="+92 334 5606564" /></a>
+                  <a className={styles.el} href="tel:+923345606564">
+                    <PerspectiveText label="+92 334 5606564" />
+                  </a>
                 </li>
               </ul>
               <h5 className="uppercase text-[12px] tracking-tight text-gray-300 pt-10 pb-5">
@@ -76,11 +72,15 @@ export default function Contact() {
               </h5>
               <ul className="w-full flex flex-col gap-3 pb-4">
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <span className="hover:text-[#c40f4c] transition-all ease-in duration-200">City: Attock</span>
+                  <span className="hover:text-[#c40f4c] transition-all ease-in duration-200">
+                    City: Attock
+                  </span>
                 </li>
 
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <span className="hover:text-[#c40f4c] transition-all ease-in duration-200">Country: Pakistan</span>
+                  <span className="hover:text-[#c40f4c] transition-all ease-in duration-200">
+                    Country: Pakistan
+                  </span>
                 </li>
               </ul>
               <h5 className="uppercase text-[12px] tracking-tight text-gray-300 pt-10 pb-5">
@@ -88,15 +88,30 @@ export default function Contact() {
               </h5>
               <ul className="w-full flex flex-col gap-3 pb-4">
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <a className={styles.el} href="https://www.instagram.com/hashbitstudio.agency"><PerspectiveText label="Instagram" /></a>
+                  <a
+                    className={styles.el}
+                    href="https://www.instagram.com/hashbitstudio.agency"
+                  >
+                    <PerspectiveText label="Instagram" />
+                  </a>
                 </li>
 
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <a className={styles.el} href="https://www.facebook.com/profile.php?id=61550345244380"><PerspectiveText label="Facebook" /></a>
+                  <a
+                    className={styles.el}
+                    href="https://www.facebook.com/profile.php?id=61550345244380"
+                  >
+                    <PerspectiveText label="Facebook" />
+                  </a>
                 </li>
 
                 <li className="h-4 cursor-pointer flex items-center text-[18px] font-[500] tracking-tight">
-                  <a className={styles.el} href="https://www.linkedin.com/in/syed-safwan-abbas-naqvi-b77339220/"><PerspectiveText label="LinkedIn" /></a>
+                  <a
+                    className={styles.el}
+                    href="https://www.linkedin.com/in/syed-safwan-abbas-naqvi-b77339220/"
+                  >
+                    <PerspectiveText label="LinkedIn" />
+                  </a>
                 </li>
               </ul>
             </div>

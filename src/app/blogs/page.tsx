@@ -5,10 +5,9 @@ import BlogContent from './_components/BlogContent';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-    title: "HashBitStudio | Blogs",
-    description: "Explore All Blogs on HashBitStudio",
+    title: "Blogs",
+    description: "Discover expert insights, tips, and trends in design, development, and digital deployment on HashBitStudio's blog. Stay ahead in the digital world.",
 };
-
 
 const Blogs = () => {
     return (

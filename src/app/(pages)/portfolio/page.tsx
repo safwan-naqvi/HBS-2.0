@@ -10,8 +10,8 @@ import HeroContainer from "@/components/layout/HeroContainer/HeroContainer";
 
 
 export const metadata: Metadata = {
-    title: "HashBitStudio | Portfolio",
-    description: "Explore Our Work on HashBitStudio",
+    title: "Portfolio",
+    description: "Explore HashBitStudio's portfolio showcasing cutting-edge design, development, and deployment projects. See how we help businesses succeed online.",
 };
 
 export default function Portfolio() {

@@ -219,16 +219,16 @@ const page = async ({ params }: any) => {
                 }
 
             </div>
-            <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9]">
-                <h2 className="text-[#111] text-3xl md:text-7xl font-semibold">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 w-full px-10 lg:px-20 text-white pt-40 pb-40 bg-[#B5C0C9] z-0">
+                <h2 className="text-[#111] text-3xl md:text-7xl font-semibold z-10">
                     Have a Project Idea?
                 </h2>
                 <img
                     src="/assets/contact_bg.webp"
                     alt="Contact Image"
-                    className="object-cover absolute bottom-0 left-0"
+                    className="object-cover absolute bottom-0 left-0 z-0 pointer-events-none"
                 />
-                <div className="mt-10 md:mt-4 z-10">
+                <div className="mt-10 md:mt-4 z-10" data-lenis-prevent>
                     <LeadForm />
                 </div>
             </div>
