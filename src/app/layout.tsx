@@ -14,7 +14,7 @@ const poppins = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hashbitstudio.com'),
+  metadataBase: new URL('https://www.hashbitstudio.com'),
   title: {
     default: "HashBitStudio | Digital Services Agency",
     template: "%s - HashBitStudio",
