@@ -2,13 +2,12 @@ name: HashBitStudio
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   # pull_request:
   #   branches: [ "main" ]
 
 jobs:
   build:
-
     runs-on: self-hosted #important
 
     strategy:
@@ -21,12 +20,15 @@ jobs:
       RESEND_API_KEY: ${{secrets.RESEND_API_KEY}}
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    #- run: npm test
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build --if-present
+      - name: Change Directory
+        run: cd /home/safwan-hbs/actions-runner/_work/HBS-2.0/HBS-2.0/
+      - run: pm2 restart 0
+    #- 0 means HBS FE
