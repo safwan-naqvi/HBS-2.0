@@ -19,7 +19,7 @@ export default function Portfolio() {
         <>
             <Suspense fallback={<Loading />}>
                 <div className={"flex flex-col bg-background fade-in"}>
-                    <SocialMedia />
+                    {/* <SocialMedia /> */}
                     <HeroContainer textOne='Our Services' textTwo='Portfolio' description='Unleashing software engineering expertise for scalable business solutions, from startups to enterprises. Simultaneously, we elevate businesses through high-end experience design, fostering exponential growth.' />
                     {/* <ServiceGallery /> */}
                     <div className='py-10'>

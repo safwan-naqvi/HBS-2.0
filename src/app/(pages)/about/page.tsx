@@ -20,7 +20,7 @@ export default function About() {
   return (
     <div>
       <div className={"flex flex-col min-h-screen bg-bgPrimary text-textPrimary fade-in"}>
-        <SocialMedia />
+        {/* <SocialMedia /> */}
         <HeroContainer textOne='About' textTwo='HashBitStudio' description='Unleashing software engineering expertise for scalable business solutions, from startups to enterprises. Simultaneously, we elevate businesses through high-end experience design, fostering exponential growth.' />
         <AboutCompany />
         <HorizontalScroll classNames="bg-neutral-900" imageShow={true} />

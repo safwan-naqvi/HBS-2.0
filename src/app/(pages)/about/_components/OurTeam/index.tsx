@@ -32,6 +32,14 @@ const Team = [
     alt: "Developer",
     founder: false
   },
+  {
+    id: 4,
+    link: "/",
+    url: "https://res.cloudinary.com/do6a0yipf/image/upload/v1727727738/Fawad_ebce0ce969.webp",
+    title: "Muhammad Fawad",
+    alt: "Data Scientist",
+    founder: false
+  }
 ];
 
 export default function OurTeam() {
@@ -54,7 +62,7 @@ export default function OurTeam() {
       <p className="text-gray-300 tracking-wide font-[300] capitalize mt-1">
         Meet our minds behind HashBitStudio
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-around gap-2 max-w-7xl mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-around gap-2 max-w-7xl mt-8">
         {Team.map((team) => (
           <Card
             key={team.id}

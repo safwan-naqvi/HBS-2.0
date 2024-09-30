@@ -180,10 +180,10 @@ export function LeadForm() {
                     name="description"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="text-md md:text-xl font-semibold text-black tracking-tight">Username</FormLabel>
+                            <FormLabel className="text-md md:text-xl font-semibold text-black tracking-tight">Description</FormLabel>
                             <FormControl>
                                 <Textarea
-                                    placeholder="Tell us a little bit about yourself"
+                                    placeholder="Tell us a little bit about Project"
                                     className="resize-none text-md md:text-md font-light tracking-tight"
                                     {...field}
                                 />
